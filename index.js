@@ -13,7 +13,7 @@ app.use(
     })
 );
 
-app.get('/', function (req, res) {
+app.get('/ticket', function (req, res) {
     
        let data   =JSON.stringify( req.body.result.parameters, null, 2);
        
