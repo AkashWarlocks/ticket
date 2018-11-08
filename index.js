@@ -16,6 +16,11 @@ app.use(
 app.get('/', function (req, res) {
     
        let data   =JSON.stringify( req.body.result.parameters, null, 2);
+       
+       fs.writeFile('service.json', data, (err) => {  
+        if (err) throw err;
+        console.log('Data written to file');
+    });
 
 
 }
