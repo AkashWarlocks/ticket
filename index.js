@@ -86,7 +86,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    } else {
+    } 
 
         return res.json({
             speech: "Thank you",
@@ -95,9 +95,6 @@ app.post('/reg', function (req, res) {
     
         });
             
-    }
-
-    
 
 }
 
