@@ -33,27 +33,69 @@ app.post('/reg', function (req, res) {
     service.name =
     req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.name;
+    req.body.result.parameters.name
+    ? req.body.result.parameters.name:"empty";
+    
 
     service.issue = req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.issue;
+    req.body.result.parameters.issue
+    ? req.body.result.parameters.issue:"empty";
 
     service.priority = service.issue = req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.priority;
+    req.body.result.parameters.priority
+    ? req.body.result.parameters.priority:"empty";
 
     service.comment = service.issue = req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.comment;
+    req.body.result.parameters.comment
+    ? req.body.result.parameters.comment:"empty";
 
-    return res.json({
-        speech: "Thank you",
-        displayText: "Done Ticket raised !!",
-        source:"dasd"
+    if ((service.name).equals("empty")) {
+        return res.json({
+            speech: "Can i Know Your name ??",
+            displayText: "Done Ticket raised !!",
+            source:"dasd"
+    
+        });
 
-    });
+    } else if ((service.issue).equals("empty")) {
+        return res.json({
+            speech: "What is the issue ?",
+            displayText: "Done Ticket raised !!",
+            source:"dasd"
+    
+        });
 
+    }  else if ((service.priority).equals("empty")) {
+        return res.json({
+            speech: "Can you tell me the priority of the issue ?",
+            displayText: "Done Ticket raised !!",
+            source:"dasd"
+    
+        });
+
+    }  else if ((service.comment).equals("empty")) {
+        return res.json({
+            speech: "Please give extra information about the incident ",
+            displayText: "Done Ticket raised !!",
+            source:"dasd"
+    
+        });
+
+    } else {
+
+        return res.json({
+            speech: "Thank you",
+            displayText: "Done Ticket raised !!",
+            source:"dasd"
+    
+        });
+            
+    }
+
+    
 
 }
 
