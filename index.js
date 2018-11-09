@@ -33,28 +33,23 @@ app.post('/reg', function (req, res) {
     service.name =
     req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.name
-    ? req.body.result.parameters.name:"empty";
-    
+    req.body.result.parameters.name;    
 
     service.issue = req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.issue
-    ? req.body.result.parameters.issue:"empty";
+    req.body.result.parameters.issue;
 
     service.priority = 
     req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.priority
-    ? req.body.result.parameters.priority:"empty";
+    req.body.result.parameters.priority;
 
     service.comment =  
     req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.comment
-    ? req.body.result.parameters.comment:"empty";
+    req.body.result.parameters.comment;
 
-   /* if ((service.name).equals("empty")) {
+    if ((service.name).equals("")) {
         return res.json({
             speech: "Can i Know Your name ??",
             displayText: "Done Ticket raised !!",
@@ -62,7 +57,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    } else if ((service.issue).equals("empty")) {
+    } else if ((service.issue).equals("")) {
         return res.json({
             speech: "What is the issue ?",
             displayText: "Done Ticket raised !!",
@@ -70,7 +65,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    }  else if ((service.priority).equals("empty")) {
+    }  else if ((service.priority).equals("")) {
         return res.json({
             speech: "Can you tell me the priority of the issue ?",
             displayText: "Done Ticket raised !!",
@@ -78,7 +73,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    }  else if ((service.comment).equals("empty")) {
+    }  else if ((service.comment).equals("")) {
         return res.json({
             speech: "Please give extra information about the incident ",
             displayText: "Done Ticket raised !!",
@@ -86,14 +81,15 @@ app.post('/reg', function (req, res) {
     
         });
 
-    } */
-
+    }else {
         return res.json({
             speech: "Thank you",
             displayText: "Done Ticket raised !!",
             source:"dasd"
     
         });
+    }
+      
             
 
 }
