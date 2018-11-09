@@ -16,7 +16,7 @@ app.use(
     bodyparser.json()
 );
 
-app.get('/reg', function (req, res) {
+app.post('/reg', function (req, res) {
     
        let data = JSON.stringify( req.body.result.parameters, null, 2);
        
