@@ -42,12 +42,14 @@ app.post('/reg', function (req, res) {
     req.body.result.parameters.issue
     ? req.body.result.parameters.issue:"empty";
 
-    service.priority = service.issue = req.body.result &&
+    service.priority = 
+    req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.priority
     ? req.body.result.parameters.priority:"empty";
 
-    service.comment = service.issue = req.body.result &&
+    service.comment =  
+    req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.comment
     ? req.body.result.parameters.comment:"empty";
