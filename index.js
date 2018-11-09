@@ -54,7 +54,7 @@ app.post('/reg', function (req, res) {
     req.body.result.parameters.comment
     ? req.body.result.parameters.comment:"empty";
 
-    if ((service.name).equals("empty")) {
+   /* if ((service.name).equals("empty")) {
         return res.json({
             speech: "Can i Know Your name ??",
             displayText: "Done Ticket raised !!",
@@ -86,7 +86,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    } 
+    } */
 
         return res.json({
             speech: "Thank you",
