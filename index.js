@@ -9,13 +9,16 @@ const port = process.env.PORT || 3000
 
 app.use(
     bodyparser.urlencoded({
-        extended: true
+        extended: false
     })
 );
+app.use(
+    bodyparser.json()
+);
 
-app.get('/ticket', function (req, res) {
+app.get('/reg', function (req, res) {
     
-       let data   =JSON.stringify( req.body.result.parameters, null, 2);
+       let data = JSON.stringify( req.body.result.parameters, null, 2);
        
        fs.writeFile('service.json', data, (err) => {  
         if (err) throw err;
