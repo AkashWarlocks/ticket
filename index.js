@@ -34,6 +34,8 @@ app.post('/reg', function (req, res) {
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.name;    
+    
+    console.log("Name is " + service.name);
 
     service.issue = req.body.result &&
     req.body.result.parameters &&
@@ -49,7 +51,7 @@ app.post('/reg', function (req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.comment;
 
-    if ((service.name).equals("")) {
+    if (service.name == "") {
         return res.json({
             speech: "Can i Know Your name ??",
             displayText: "Done Ticket raised !!",
@@ -57,7 +59,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    } else if ((service.issue).equals("")) {
+    } else if ((service.issue)== "") {
         return res.json({
             speech: "What is the issue ?",
             displayText: "Done Ticket raised !!",
@@ -65,7 +67,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    }  else if ((service.priority).equals("")) {
+    } else if ((service.priority)== "") {
         return res.json({
             speech: "Can you tell me the priority of the issue ?",
             displayText: "Done Ticket raised !!",
@@ -73,7 +75,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    }  else if ((service.comment).equals("")) {
+    } else if ((service.comment)== "") {
         return res.json({
             speech: "Please give extra information about the incident ",
             displayText: "Done Ticket raised !!",
@@ -81,7 +83,7 @@ app.post('/reg', function (req, res) {
     
         });
 
-    }else {
+    } else {
         return res.json({
             speech: "Thank you",
             displayText: "Done Ticket raised !!",
