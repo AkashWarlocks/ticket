@@ -85,11 +85,13 @@ app.post('/reg', function (req, res) {
 
     } else {
         return res.json({
-            
+            "basicCard": {
+                
                 "title": "SERVICE TICKET",
                 "subtitle": "ISSUE " +service.issue,
                 "formattedText": "Priority "+service.priority
-    
+                
+              },
         });
     }
       
