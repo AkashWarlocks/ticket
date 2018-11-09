@@ -85,9 +85,10 @@ app.post('/reg', function (req, res) {
 
     } else {
         return res.json({
-            speech: "Thank you",
-            displayText: "Done Ticket raised !!",
-            source:"dasd"
+            
+                "title": "SERVICE TICKET",
+                "subtitle": "ISSUE " +service.issue,
+                "formattedText": "Priority "+service.priority
     
         });
     }
