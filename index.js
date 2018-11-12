@@ -39,7 +39,7 @@ app.post('/reg', function (req, res) {
         if (err) throw err;
         console.log('Data written to file');
     });*/
-    if(req.body.metadata.intentName == "Service_Ticket")
+    if(req.body.result.metadata.intentName == "Service_Ticket")
     {
         service.name =
     req.body.result &&
@@ -149,7 +149,7 @@ app.post('/reg', function (req, res) {
                         "items" : [
                             {
                                 "simpleResponse" : {
-                                    "textToSpeech": "Service ticket raised successfully. Here is your TICKET"
+                                    "textToSpeech": "Your issues are listed below"
                                 }
                             },
                         ]
@@ -158,6 +158,15 @@ app.post('/reg', function (req, res) {
                 }
 
             },
+            "contextOut": [
+                {
+                  "name": "_actions_on_google",
+                  "lifespan": 99,
+                  "parameters": {
+                    "data": "{}"
+                  }
+                }
+              ]
 
         });
 
