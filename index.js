@@ -83,9 +83,7 @@ app.post('/reg', function (req, res) {
 
     } else {
         return res.json({
-            "speech": "Ticket Rasied",
-            "displayText": "Ticket Rasied successfully",
-            
+
             "data":{
                 "google": {
                     "expectedUserResponse":true,
@@ -98,7 +96,7 @@ app.post('/reg', function (req, res) {
                             } ,
                             {
                                 "basicCard": {
-                
+
                                     "title": "SERVICE TICKET",
                                     "subtitle": "ISSUE " +service.issue,
                                     "formattedText": "Priority "+service.priority
@@ -110,7 +108,7 @@ app.post('/reg', function (req, res) {
                     }
 
                 }
-                
+
             },
 
             
