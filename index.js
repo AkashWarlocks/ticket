@@ -95,7 +95,7 @@ app.post('/reg', function (req, res) {
             "data":{
                 "google": {
                     "expectedUserResponse":true,
-                    "richResponse": {
+                    "richInitialPrompt": {
                         "items" : [
                             {
                                 "simpleResponse": {
