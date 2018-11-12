@@ -6,6 +6,7 @@ global.service = {
     priority:null,
     issue:null,
     comment:null,
+    id:null
 };
 
 const app = express()
@@ -82,7 +83,9 @@ app.post('/reg', function (req, res) {
         });
 
     } else {
+        service.id = Math.floor(Math.random() * 100) + 1;
         return res.json({
+            
 
             "speech": "this text is spoken out loud if the platform supports voice interactions",
             "displayText": "this text is displayed visually",
@@ -94,14 +97,14 @@ app.post('/reg', function (req, res) {
                         "items" : [
                             {
                                 "simpleResponse" : {
-                                    "textToSpeech":"SUCCESS"
+                                    "textToSpeech":"Service ticket raised successfully. Here is your TICKET"
                                 }
                             },
                             {
                                 "basicCard": {
             
                                     "title": "SERVICE TICKET",
-                                    "subtitle": "ISSUE " +service.issue,
+                                    "subtitle": "ISSUE " +service.issue +" \n  ID - " +service.id,
                                     "formattedText": "Priority "+service.priority
                                         
                                   },
