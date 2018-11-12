@@ -35,8 +35,6 @@ app.post('/reg', function (req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.name;    
     
-    console.log("Name is " + service.name);
-
     service.issue = req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.issue;
@@ -85,13 +83,24 @@ app.post('/reg', function (req, res) {
 
     } else {
         return res.json({
+            "messages": {
+                "type": 1,
+                "title": "card title",
+                "subtitle": "card text",
+                "imageUrl": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png"
+              },
+            
+            /*"data":{
+                
+            },
+
             "basicCard": {
                 
                 "title": "SERVICE TICKET",
                 "subtitle": "ISSUE " +service.issue,
                 "formattedText": "Priority "+service.priority
                 
-              },
+              },*/
         });
     }
       
