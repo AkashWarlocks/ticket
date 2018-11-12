@@ -83,14 +83,8 @@ app.post('/reg', function (req, res) {
 
     } else {
         return res.json({
-            "speech": "this text is spoken out loud if the platform supports voice interactions",
-            "displayText": "this text is displayed visually",
-            "messages": {
-                "type": 1,
-                "title": "card title",
-                "subtitle": "card text",
-                "imageUrl": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png"
-              },
+            "speech": "Ticket Rasied",
+            "displayText": "Ticket Rasied successfully",
             
             "data":{
                 "google": {
@@ -100,17 +94,19 @@ app.post('/reg', function (req, res) {
                             {
                                 "simpleResponse": {
                                     "textToSpeech": "Ticket Is Raised"
-                                },
+                                }
+                            } ,
+                            {
                                 "basicCard": {
                 
                                     "title": "SERVICE TICKET",
                                     "subtitle": "ISSUE " +service.issue,
                                     "formattedText": "Priority "+service.priority
-                                    
+                                        
                                   },
-
-                            }
-                        ]
+                            }   
+                                
+                        ],
                     }
 
                 }
