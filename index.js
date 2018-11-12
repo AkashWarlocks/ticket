@@ -118,6 +118,15 @@ app.post('/reg', function (req, res) {
                 }
 
             },
+            "contextOut": [
+                {
+                  "name": "_actions_on_google",
+                  "lifespan": 99,
+                  "parameters": {
+                    "data": "{}"
+                  }
+                }
+              ]
 
             
         });
