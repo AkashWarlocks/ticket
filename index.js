@@ -90,19 +90,34 @@ app.post('/reg', function (req, res) {
                 "title": "card title",
                 "subtitle": "card text",
                 "imageUrl": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png"
-              }
+              },
             
-            /*"data":{
+            "data":{
+                "google": {
+                    "expectedUserResponse":true,
+                    "richResponse": {
+                        "items" : [
+                            {
+                                "simpleResponse": {
+                                    "textToSpeech": "Ticket Is Raised"
+                                },
+                                "basicCard": {
+                
+                                    "title": "SERVICE TICKET",
+                                    "subtitle": "ISSUE " +service.issue,
+                                    "formattedText": "Priority "+service.priority
+                                    
+                                  },
+
+                            }
+                        ]
+                    }
+
+                }
                 
             },
 
-            "basicCard": {
-                
-                "title": "SERVICE TICKET",
-                "subtitle": "ISSUE " +service.issue,
-                "formattedText": "Priority "+service.priority
-                
-              },*/
+            
         });
     }
       
