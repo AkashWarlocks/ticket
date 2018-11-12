@@ -87,25 +87,33 @@ app.post('/reg', function (req, res) {
             "data":{
                 "google": {
                     "expectedUserResponse":true,
-                    "richInitialPrompt": {
-                        "items" : [
-                            {
-                                "simpleResponse": {
-                                    "textToSpeech": "Ticket Is Raised"
+                    "expectedInputs": [
+                        {
+                            "inputPrompt": {
+                                "richInitialPrompt": {
+                                    "items" : [
+                                        {
+                                            "simpleResponse": {
+                                                "textToSpeech": "Ticket Is Raised"
+                                            }
+                                        } ,
+                                        {
+                                            "basicCard": {
+            
+                                                "title": "SERVICE TICKET",
+                                                "subtitle": "ISSUE " +service.issue,
+                                                "formattedText": "Priority "+service.priority
+                                                    
+                                              },
+                                        }   
+                                            
+                                    ],
                                 }
-                            } ,
-                            {
-                                "basicCard": {
 
-                                    "title": "SERVICE TICKET",
-                                    "subtitle": "ISSUE " +service.issue,
-                                    "formattedText": "Priority "+service.priority
-                                        
-                                  },
-                            }   
-                                
-                        ],
-                    }
+                            }
+                        }
+                    ]
+                    
 
                 }
 
