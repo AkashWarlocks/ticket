@@ -140,9 +140,25 @@ app.post('/reg', function (req, res) {
     
     } else {
         return res.json({
-            speech: "This are your Issues",
-            displayText: "ISSUES RAISED UPTIL NOW - ",
-            source:"agent"
+            "speech": "this text is spoken out loud if the platform supports voice interactions",
+            "displayText": "this text is displayed visually",
+            "data":{
+                "google": {
+                    "expectedUserResponse":true,
+                    "richResponse" : {
+                        "items" : [
+                            {
+                                "simpleResponse" : {
+                                    "textToSpeech": "Service ticket raised successfully. Here is your TICKET"
+                                }
+                            },
+                        ]
+                    }
+                   
+                }
+
+            },
+
         });
 
     }
