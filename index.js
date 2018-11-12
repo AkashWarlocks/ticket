@@ -84,6 +84,9 @@ app.post('/reg', function (req, res) {
     } else {
         return res.json({
 
+            "speech": "this text is spoken out loud if the platform supports voice interactions",
+            "displayText": "this text is displayed visually",
+
             "data":{
                 "google": {
                     "expectedUserResponse":true,
