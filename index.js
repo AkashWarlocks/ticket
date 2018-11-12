@@ -87,34 +87,20 @@ app.post('/reg', function (req, res) {
             "data":{
                 "google": {
                     "expectedUserResponse":true,
-                    "expectedInputs": [
-                        {
-                            "inputPrompt": {
-                                "richInitialPrompt": {
-                                    "items" : [
-                                        {
-                                            "simpleResponse": {
-                                                "textToSpeech": "Ticket Is Raised"
-                                            }
-                                        } ,
-                                        {
-                                            "basicCard": {
+                    "richResponse" : {
+                        "items" : [
+                            {
+                                "basicCard": {
             
-                                                "title": "SERVICE TICKET",
-                                                "subtitle": "ISSUE " +service.issue,
-                                                "formattedText": "Priority "+service.priority
-                                                    
-                                              },
-                                        }   
-                                            
-                                    ],
-                                }
-
+                                    "title": "SERVICE TICKET",
+                                    "subtitle": "ISSUE " +service.issue,
+                                    "formattedText": "Priority "+service.priority
+                                        
+                                  },
                             }
-                        }
-                    ]
-                    
-
+                        ]
+                    }
+                   
                 }
 
             },
