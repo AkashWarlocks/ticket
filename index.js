@@ -1,13 +1,22 @@
 const express = require('express')
 const bodyparser = require('body-parser');
 const fs = require('fs');
-global.service = {
-    name:null,
-    priority:null,
-    issue:null,
-    comment:null,
-    id:null
-};
+global.service =
+{
+    "tickets": [
+        {
+            "name":null,
+            "priority":null,
+            "issue":null,
+            "comment":null,
+            "id":null
+        }
+
+    ]
+}
+    
+
+ ;
 
 const app = express()
 
@@ -30,8 +39,9 @@ app.post('/reg', function (req, res) {
         if (err) throw err;
         console.log('Data written to file');
     });*/
-
-    service.name =
+    if(req.body.metadata.intentName == "Service_Ticket")
+    {
+        service.name =
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.name;    
@@ -53,39 +63,38 @@ app.post('/reg', function (req, res) {
     if (service.name == "") {
         return res.json({
             speech: "Can i Know Your name ??",
-            displayText: "Done Ticket raised !!",
-            source:"dasd"
+            displayText: "Can i Know Your name",
+            source:"google"
     
         });
 
     } else if ((service.issue)== "") {
         return res.json({
             speech: "What is the issue ?",
-            displayText: "Done Ticket raised !!",
-            source:"dasd"
+            displayText: "What is the issue ?",
+            source:"google"
     
         });
 
     } else if ((service.priority)== "") {
         return res.json({
             speech: "Can you tell me the priority of the issue ?",
-            displayText: "Done Ticket raised !!",
-            source:"dasd"
+            displayText: "Can you tell me the priority of the issue ?",
+            source:"google"
     
         });
 
     } else if ((service.comment)== "") {
         return res.json({
             speech: "Please give extra information about the incident ",
-            displayText: "Done Ticket raised !!",
-            source:"dasd"
+            displayText: "Please give extra information about the incident ",
+            source:"google"
     
         });
 
     } else {
         service.id = Math.floor(Math.random() * 100) + 1;
         return res.json({
-            
 
             "speech": "this text is spoken out loud if the platform supports voice interactions",
             "displayText": "this text is displayed visually",
@@ -126,7 +135,16 @@ app.post('/reg', function (req, res) {
               ]
 
             
+            });
+        }
+    
+    } else {
+        return res.json({
+            speech: "This are your Issues",
+            displayText: "ISSUES RAISED UPTIL NOW - ",
+            source:"google"
         });
+
     }
       
             
