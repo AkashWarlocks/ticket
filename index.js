@@ -93,6 +93,11 @@ app.post('/reg', function (req, res) {
                     "richResponse" : {
                         "items" : [
                             {
+                                "simpleResponse" : {
+                                    "textToSpeech":"SUCCESS"
+                                }
+                            },
+                            {
                                 "basicCard": {
             
                                     "title": "SERVICE TICKET",
