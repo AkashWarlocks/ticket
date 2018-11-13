@@ -82,9 +82,9 @@ app.post('/reg', function (req, res) {
 
         } else {
             
-            service.name.push(req.body.result &&
+            service.name = req.body.result &&
             req.body.result.parameters &&
-            req.body.result.parameters.name);
+            req.body.result.parameters.name;
             console.log(" the name - " +service.tickets.name);
             
             service.issue.push(req.body.result &&
