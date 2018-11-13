@@ -182,46 +182,46 @@ app.post('/reg', function (req, res) {
                       }
                     }
                   ]
-    
             });
     
 
-        } else { }
-        for(i = 0; i<len; i++) {
+        } else { 
+            for(i = 0; i<len; i++) {
 
-            return res.json({
-            
-                "speech": "Raised tickets",
-                "displayText": "this text is displayed visually",
-                "data":{
-                    "google": {
-                        "expectedUserResponse":true,
-                        "richResponse" : {
-                            "items" : [
-                                {
-                                    "simpleResponse" : {
-                                        "textToSpeech": "Your issues are listed below"
-                                    }
-                                },
-                            ]
+                return res.json({
+                
+                    "speech": "Raised tickets",
+                    "displayText": "this text is displayed visually",
+                    "data":{
+                        "google": {
+                            "expectedUserResponse":true,
+                            "richResponse" : {
+                                "items" : [
+                                    {
+                                        "simpleResponse" : {
+                                            "textToSpeech": "Your issues are listed below"
+                                        }
+                                    },
+                                ]
+                            }
+                           
                         }
-                       
-                    }
-    
-                },
-                "contextOut": [
-                    {
-                      "name": "_actions_on_google",
-                      "lifespan": 99,
-                      "parameters": {
-                        "data": "{}"
-                      }
-                    }
-                  ]
-    
-            });
-    
-
+        
+                    },
+                    "contextOut": [
+                        {
+                          "name": "_actions_on_google",
+                          "lifespan": 99,
+                          "parameters": {
+                            "data": "{}"
+                          }
+                        }
+                      ]
+        
+                });
+        
+        }
+        
         }
         
     }
