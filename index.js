@@ -3,7 +3,7 @@ const bodyparser = require('body-parser');
 const fs = require('fs');
 var service ={
     
-    "tickets": [   
+    "tickets": 
         {
             "name":[],
             "priority":[],
@@ -12,7 +12,7 @@ var service ={
             "id":[]
             
         }   
-    ]
+    
     
 }
 
