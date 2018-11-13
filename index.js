@@ -1,22 +1,27 @@
 const express = require('express')
 const bodyparser = require('body-parser');
 const fs = require('fs');
-var service ={
-    
-    "tickets": 
-        {
-            "name":[],
-            "priority":[],
-            "issue":[],
-            "comment":[],
-            "id":[]
-            
-        }   
-    
-    
-}
+/*var ticket = [
+    {
+        "name":
+        "priority":
+        "issue":
+        "comment"
+        "id"
+    }
+]*/
 
- ;
+
+var service = [
+    {
+        "name":null,
+        "priority":null,
+        "issue":null,
+        "comment":null,
+        "id":null
+    },
+
+]     
 
 const app = express()
 
@@ -32,13 +37,6 @@ app.use(
 );
 
 app.post('/reg', function (req, res) {
-    
-       /*let data = JSON.stringify( req.body.result.parameters, null, 2);
-       
-       fs.writeFile('service.json', data, (err) => {  
-        if (err) throw err;
-        console.log('Data written to file');
-    });*/
         
     if(req.body.result.metadata.intentName == "Service_Ticket")
     {
@@ -84,21 +82,21 @@ app.post('/reg', function (req, res) {
 
         } else {
             
-            service.tickets.name.push(req.body.result &&
+            service.name.push(req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.name);
             console.log(" the name - " +service.tickets.name);
             
-            service.tickets.issue.push(req.body.result &&
+            service.issue.push(req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.issue);
         
-            service.tickets.priority.push( 
+            service.priority.push( 
             req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.priority);
         
-            service.tickets.comment.push(  
+            service.comment.push(  
             req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.comment);
@@ -124,8 +122,8 @@ app.post('/reg', function (req, res) {
                                     "basicCard": {
                 
                                         "title": "SERVICE TICKET",
-                                        "subtitle": "ISSUE " +service.tickets.issue[service.tickets.issue.length - 1] +" \n  ID - " +service.tickets.id[service.tickets.id.length - 1],
-                                        "formattedText": "Priority "+service.tickets.priority[service.tickets.priority.length -1]
+                                        "subtitle": "ISSUE " +service.issue[service.length - 1] +" \n  ID - " +service.id[service.length - 1],
+                                        "formattedText": "Priority "+service.priority[service.length -1]
                                             
                                     },
                                 }
@@ -151,7 +149,7 @@ app.post('/reg', function (req, res) {
         
     } else {
         var i;
-        var len = service.tickets.name.length
+        var len = service.length;
         if(len == 0) {
             return res.json({
             
@@ -178,7 +176,7 @@ app.post('/reg', function (req, res) {
                       "name": "_actions_on_google",
                       "lifespan": 99,
                       "parameters": {
-                        "data": "{}"
+                      "data": "{}"
                       }
                     }
                   ]
@@ -186,6 +184,8 @@ app.post('/reg', function (req, res) {
     
 
         } else { 
+            var str = JSON.stringify(service);
+            console.log(str);
             for(i = 0; i<len; i++) {
 
                 return res.json({
@@ -202,6 +202,15 @@ app.post('/reg', function (req, res) {
                                             "textToSpeech": "Your issues are listed below"
                                         }
                                     },
+                                    {
+                                        "basicCard": {
+                    
+                                            "title": "SERVICE TICKET ID - " +service.id[service.length - 1],
+                                            "formattedText": "Priority "+service.priority[service.length -1],
+                                            "subtitle": "ISSUE " +service.issue[service.length - 1] , 
+                                                
+                                        }
+                                    }   
                                 ]
                             }
                            
