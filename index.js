@@ -5,11 +5,11 @@ var service ={
     
     "tickets": [   
         {
-            "name":null,
-            "priority":null,
-            "issue":null,
-            "comment":null,
-            "id":null
+            "name":[],
+            "priority":[],
+            "issue":[],
+            "comment":[],
+            "id":[]
             
         }   
     ]
