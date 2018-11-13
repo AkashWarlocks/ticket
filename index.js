@@ -39,30 +39,12 @@ app.post('/reg', function (req, res) {
         if (err) throw err;
         console.log('Data written to file');
     });*/
-    if(req.body.result.metadata.intentName == "Service_Ticket")
-    {
-        service.tickets.name.push(req.body.result &&
-            req.body.result.parameters &&
-            req.body.result.parameters.name);
-            console.log(service.tickets.name);
         
-    
-    service.tickets.issue.push(req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.issue);
-
-    service.tickets.priority.push( 
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.priority);
-
-    service.tickets.comment.push(  
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.comment);
     if(req.body.result.metadata.intentName == "Service_Ticket")
     {
-        if (service.tickets.name[service.tickets.name - 1] == "") {
+        if (!(req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.name)) {
             return res.json({
                 speech: "Can i Know Your name ??",
                 displayText: "Can i Know Your name",
@@ -70,7 +52,9 @@ app.post('/reg', function (req, res) {
     
             });
 
-        } else if (service.tickets.issue[service.tickets.issue - 1]== "") {
+        } else if (!(req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.issue)) {
             return res.json({
                 speech: "What is the issue ?",
                 displayText: "What is the issue ?",
@@ -78,7 +62,9 @@ app.post('/reg', function (req, res) {
         
             });
 
-        } else if (service.tickets.priority[service.tickets.priority -1]== "") {
+        } else if (!(req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.priority)) {
             return res.json({
                 speech: "Can you tell me the priority of the issue ?",
                 displayText: "Can you tell me the priority of the issue ?",
@@ -86,7 +72,9 @@ app.post('/reg', function (req, res) {
         
             });
 
-        } else if ( service.tickets.comment[service.tickets.comment -1]== "") {
+        } else if ( !(req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.comment)) {
             return res.json({
                 speech: "Please give extra information about the incident ",
                 displayText: "Please give extra information about the incident ",
@@ -95,7 +83,28 @@ app.post('/reg', function (req, res) {
             });
 
         } else {
-            service.id = Math.floor(Math.random() * 100) + 1;
+            
+            service.tickets.name.push(req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.name);
+            console.log("the name - " +service.tickets.name);
+            
+            service.tickets.issue.push(req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.issue);
+        
+            service.tickets.priority.push( 
+            req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.priority);
+        
+            service.tickets.comment.push(  
+            req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.comment);
+            
+            var id_ti = Math.floor(Math.random() * 100) + 1;
+            service.tickets.id.push(id_ti);
             return res.json({
 
                 "speech": "this text is spoken out loud if the platform supports voice interactions",
@@ -179,6 +188,6 @@ app.post('/reg', function (req, res) {
 
 }
 
-},
+
 )
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
