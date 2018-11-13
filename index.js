@@ -125,7 +125,7 @@ app.post('/reg', function (req, res) {
                 
                                         "title": "SERVICE TICKET",
                                         "subtitle": "ISSUE " +service.tickets.issue[service.tickets.issue - 1] +" \n  ID - " +service.tickets.id[service.tickets.id - 1],
-                                        "formattedText": "Priority "+service.ticket.priority[service.tickets.priority.length -1]
+                                        "formattedText": "Priority "+service.tickets.priority[service.tickets.priority.length -1]
                                             
                                     },
                                 }
