@@ -87,7 +87,7 @@ app.post('/reg', function (req, res) {
             service.tickets.name.push(req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.name);
-            console.log("the name - " +service.tickets.name);
+            console.log(" the name - " +service.tickets.name);
             
             service.tickets.issue.push(req.body.result &&
             req.body.result.parameters &&
@@ -107,8 +107,8 @@ app.post('/reg', function (req, res) {
             service.tickets.id.push(id_ti);
             return res.json({
 
-                "speech": "this text is spoken out loud if the platform supports voice interactions",
-                "displayText": "this text is displayed visually",
+                "speech": "Issue raised",
+                "displayText": "Issue raised",
 
                 "data":{
                     "google": {
@@ -124,7 +124,7 @@ app.post('/reg', function (req, res) {
                                     "basicCard": {
                 
                                         "title": "SERVICE TICKET",
-                                        "subtitle": "ISSUE " +service.issue +" \n  ID - " +service.id,
+                                        "subtitle": "ISSUE " +service.tickets.issue +" \n  ID - " +service.tickets.id,
                                         "formattedText": "Priority "+service.priority
                                             
                                     },
@@ -152,7 +152,7 @@ app.post('/reg', function (req, res) {
     } else {
         return res.json({
             
-            "speech": "this text is spoken out loud if the platform supports voice interactions",
+            "speech": "Raised tickets",
             "displayText": "this text is displayed visually",
             "data":{
                 "google": {
