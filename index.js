@@ -124,8 +124,8 @@ app.post('/reg', function (req, res) {
                                     "basicCard": {
                 
                                         "title": "SERVICE TICKET",
-                                        "subtitle": "ISSUE " +service.tickets.issue +" \n  ID - " +service.tickets.id,
-                                        "formattedText": "Priority "+service.priority
+                                        "subtitle": "ISSUE " +service.tickets.issue[service.tickets.issue - 1] +" \n  ID - " +service.tickets.id[service.tickets.id - 1],
+                                        "formattedText": "Priority "+service.ticket.priority[service.tickets.priority.length -1]
                                             
                                     },
                                 }
