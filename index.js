@@ -124,7 +124,7 @@ app.post('/reg', function (req, res) {
                                     "basicCard": {
                 
                                         "title": "SERVICE TICKET",
-                                        "subtitle": "ISSUE " +service.tickets.issue[service.tickets.issue - 1] +" \n  ID - " +service.tickets.id[service.tickets.id - 1],
+                                        "subtitle": "ISSUE " +service.tickets.issue[service.tickets.issue.length - 1] +" \n  ID - " +service.tickets.id[service.tickets.id.length - 1],
                                         "formattedText": "Priority "+service.tickets.priority[service.tickets.priority.length -1]
                                             
                                     },
@@ -150,42 +150,82 @@ app.post('/reg', function (req, res) {
             }
         
     } else {
-        return res.json({
+        var i;
+        var len = service.tickets.name.length
+        if(len == 0) {
+            return res.json({
             
-            "speech": "Raised tickets",
-            "displayText": "this text is displayed visually",
-            "data":{
-                "google": {
-                    "expectedUserResponse":true,
-                    "richResponse" : {
-                        "items" : [
-                            {
-                                "simpleResponse" : {
-                                    "textToSpeech": "Your issues are listed below"
-                                }
-                            },
-                        ]
+                "speech": "No tickets raised",
+                "displayText": "this text is displayed visually",
+                "data":{
+                    "google": {
+                        "expectedUserResponse":true,
+                        "richResponse" : {
+                            "items" : [
+                                {
+                                    "simpleResponse" : {
+                                        "textToSpeech": "You have no tickets raised"
+                                    }
+                                },
+                            ]
+                        }
+                       
                     }
-                   
-                }
+    
+                },
+                "contextOut": [
+                    {
+                      "name": "_actions_on_google",
+                      "lifespan": 99,
+                      "parameters": {
+                        "data": "{}"
+                      }
+                    }
+                  ]
+    
+            });
+    
 
-            },
-            "contextOut": [
-                {
-                  "name": "_actions_on_google",
-                  "lifespan": 99,
-                  "parameters": {
-                    "data": "{}"
-                  }
-                }
-              ]
+        } else { }
+        for(i = 0; i<len; i++) {
 
-        });
+            return res.json({
+            
+                "speech": "Raised tickets",
+                "displayText": "this text is displayed visually",
+                "data":{
+                    "google": {
+                        "expectedUserResponse":true,
+                        "richResponse" : {
+                            "items" : [
+                                {
+                                    "simpleResponse" : {
+                                        "textToSpeech": "Your issues are listed below"
+                                    }
+                                },
+                            ]
+                        }
+                       
+                    }
+    
+                },
+                "contextOut": [
+                    {
+                      "name": "_actions_on_google",
+                      "lifespan": 99,
+                      "parameters": {
+                        "data": "{}"
+                      }
+                    }
+                  ]
+    
+            });
+    
 
+        }
+        
     }
       
-            
-
 }
 
 
