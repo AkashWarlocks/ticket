@@ -85,7 +85,7 @@ app.post('/reg', function (req, res) {
             service.name = req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.name;
-            console.log(" the name - " +service.tickets.name);
+            console.log(" the name - " +service.name);
             
             service.issue.push(req.body.result &&
             req.body.result.parameters &&
