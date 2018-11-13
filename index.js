@@ -44,6 +44,7 @@ app.post('/reg', function (req, res) {
         service.tickets.name.push(req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.name);
+            console.log(service.tickets.name);
         
     
     service.tickets.issue.push(req.body.result &&
