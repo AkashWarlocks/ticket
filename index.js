@@ -106,7 +106,7 @@ app.post('/reg', function (req, res) {
                             "items" : [
                                 {
                                     "simpleResponse" : {
-                                        "textToSpeech":"Service ticket raised successfully. Here is your TICKET"
+                                        "textToSpeech":"Service ticket raised successfully. Here is your TICKET",
                                     }
                                 },
                                 {
