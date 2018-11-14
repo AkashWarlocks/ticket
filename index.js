@@ -156,103 +156,88 @@ app.post('/reg', function (req, res) {
                         }  
                     }
                 },
-                "contextOut": [
-                    {
-                      "name": "_actions_on_google",
-                      "lifespan": 99,
-                      "parameters": {
-                      "data": "{}"
-                      }
-                    }
-                  ]
             });
     
 
-        } else { 
-            var res = []
-            var i;
-            for (i = 0; i<service.length;i++) {
-                res.push({
-                    "optionInfo": {
-                        "key": "MATH_AND_PRIME",
-                        "synonyms": [
-                            "math",
-                            "math and prime",
-                            "prime numbers",
-                            "prime"
-                        ]
+            } else { 
+                var resp = []
+                var i;
+                for (i = 0; i<service.length;i++) {
+                    resp.push({
+                        "optionInfo": {
+                            "key": "MATH_AND_PRIME",
+                            "synonyms": [
+                                "math",
+                                "math and prime",
+                                "prime numbers",
+                                "prime"
+                            ]
+                        },
+                        "title": "Math & prime numbers",
+                        "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
+                        "image": {
+                            "url": "http://example.com/math_and_prime.jpg",
+                            "accessibilityText": "Math & prime numbers"
+                        }
                     },
-                    "title": "Math & prime numbers",
-                    "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
-                    "image": {
-                        "url": "http://example.com/math_and_prime.jpg",
-                        "accessibilityText": "Math & prime numbers"
-                    }
-                },
 
-                )
-            }
-    
-    
-
-            return res.json({
-            
-                "speech": "Raised tickets",
-                "displayText": "this text is displayed visually",
-                "data":{
-                    "google": {
-                        "expectedUserResponse":true,
-                        "richResponse" : {
-                            "items" : [
-                                {
-                                    "simpleResponse" : {
-                                        "textToSpeech": "Your issues are listed below"                                        }
-                                },
-                                {
-                                    "listSelect": {
-                    
-                                    "title": "List of issues raised", 
-                                    "items": [
-                                        {
-                                            "optionInfo": {
-                                                "key": "MATH_AND_PRIME",
-                                                "synonyms": [
-                                                    "math",
-                                                    "math and prime",
-                                                    "prime numbers",
-                                                    "prime"
-                                                ]
+                    )
+                }
+                return res.json({
+                
+                    "speech": "Raised tickets",
+                    "displayText": "this text is displayed visually",
+                    "data":{
+                        "google": {
+                            "expectedUserResponse":true,
+                            "richResponse" : {
+                                "items" : [
+                                    {
+                                        "simpleResponse" : {
+                                            "textToSpeech": "Your issues are listed below"                                        }
+                                    },
+                                    {
+                                        "listSelect": {
+                        
+                                        "title": "List of issues raised", 
+                                        "items": [
+                                            {
+                                                "optionInfo": {
+                                                    "key": "MATH_AND_PRIME",
+                                                    "synonyms": [
+                                                        "math",
+                                                        "math and prime",
+                                                        "prime numbers",
+                                                        "prime"
+                                                    ]
+                                                },
+                                                "title": "Math & prime numbers",
+                                                "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
+                                                "image": {
+                                                    "url": "http://example.com/math_and_prime.jpg",
+                                                    "accessibilityText": "Math & prime numbers"
+                                                }
                                             },
-                                            "title": "Math & prime numbers",
-                                            "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
-                                            "image": {
-                                                "url": "http://example.com/math_and_prime.jpg",
-                                                "accessibilityText": "Math & prime numbers"
+                                        ]          
                                             }
-                                        },
-                                    ]          
-                                        }
-                                    }   
-                                ]
+                                        }   
+                                    ]
+                                }
+                            
                             }
-                           
-                        }
-        
-                    },
-                    "contextOut": [
-                        {
-                          "name": "_actions_on_google",
-                          "lifespan": 99,
-                          "parameters": {
-                            "data": "{}"
-                          }
-                        }
-                      ]
-        
-                });
-        
-        
-        
+            
+                        },
+                        "contextOut": [
+                            {
+                            "name": "_actions_on_google",
+                            "lifespan": 99,
+                            "parameters": {
+                                "data": "{}"
+                            }
+                            }
+                        ]
+            
+                    });
         }
         
     }
