@@ -12,16 +12,7 @@ const fs = require('fs');
 ]*/
 
 
-var service = [
-    {
-        "name":null,
-        "priority":null,
-        "issue":null,
-        "comment":null,
-        "id":null
-    },
-
-]     
+var service = []     
 
 const app = express()
 
@@ -81,8 +72,25 @@ app.post('/reg', function (req, res) {
             });
 
         } else {
+            var id_ti = Math.floor(Math.random() * 100) + 1;
+            var ticket_obj = {
+                "name": req.body.result &&
+                req.body.result.parameters &&
+                req.body.result.parameters.name,
+                "priority":req.body.result &&
+                req.body.result.parameters &&
+                req.body.result.parameters.priority,
+                "issue":req.body.result &&
+                req.body.result.parameters &&
+                req.body.result.parameters.issue,
+                "comment" :req.body.result &&
+                req.body.result.parameters &&
+                req.body.result.parameters.comment,
+                "id" :id_ti
+                
+            }
             
-            service.name = req.body.result &&
+           /* service.name = req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.name;
             console.log(" the name - " +service.name);
@@ -102,7 +110,10 @@ app.post('/reg', function (req, res) {
             req.body.result.parameters.comment);
             
             var id_ti = Math.floor(Math.random() * 100) + 1;
-            service.tickets.id.push(id_ti);
+            service.tickets.id.push(id_ti);*/
+            service.push(ticket_obj);
+            console.log(service);
+
             return res.json({
 
                 "speech": "Issue raised",
