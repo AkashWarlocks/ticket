@@ -93,7 +93,8 @@ app.post('/reg', function (req, res) {
             
             service.push(ticket_obj);
             console.log(service);
-
+           
+                    
             return res.json({
 
                 "speech": "Issue raised",
@@ -136,9 +137,7 @@ app.post('/reg', function (req, res) {
             }
         
     } else {
-        var i;
-        var len = service.length;
-        if(len == 0) {
+           if(service.length == 0) {
             return res.json({
             
                 "speech": "No tickets raised",
@@ -170,31 +169,68 @@ app.post('/reg', function (req, res) {
     
 
         } else { 
-            var str = JSON.stringify(service);
-            console.log(str);
-            for(i = 0; i<len; i++) {
+            var res = []
+            var i;
+            for (i = 0; i<service.length;i++) {
+                res.push({
+                    "optionInfo": {
+                        "key": "MATH_AND_PRIME",
+                        "synonyms": [
+                            "math",
+                            "math and prime",
+                            "prime numbers",
+                            "prime"
+                        ]
+                    },
+                    "title": "Math & prime numbers",
+                    "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
+                    "image": {
+                        "url": "http://example.com/math_and_prime.jpg",
+                        "accessibilityText": "Math & prime numbers"
+                    }
+                },
 
-                return res.json({
-                
-                    "speech": "Raised tickets",
-                    "displayText": "this text is displayed visually",
-                    "data":{
-                        "google": {
-                            "expectedUserResponse":true,
-                            "richResponse" : {
-                                "items" : [
-                                    {
-                                        "simpleResponse" : {
-                                            "textToSpeech": "Your issues are listed below"
-                                        }
-                                    },
-                                    {
-                                        "basicCard": {
+                )
+            }
+    
+    
+
+            return res.json({
+            
+                "speech": "Raised tickets",
+                "displayText": "this text is displayed visually",
+                "data":{
+                    "google": {
+                        "expectedUserResponse":true,
+                        "richResponse" : {
+                            "items" : [
+                                {
+                                    "simpleResponse" : {
+                                        "textToSpeech": "Your issues are listed below"                                        }
+                                },
+                                {
+                                    "listSelect": {
                     
-                                            "title": "SERVICE TICKET ID - " +service.id[service.length - 1],
-                                            "formattedText": "Priority "+service.priority[service.length -1],
-                                            "subtitle": "ISSUE " +service.issue[service.length - 1] , 
-                                                
+                                    "title": "List of issues raised", 
+                                    "items": [
+                                        {
+                                            "optionInfo": {
+                                                "key": "MATH_AND_PRIME",
+                                                "synonyms": [
+                                                    "math",
+                                                    "math and prime",
+                                                    "prime numbers",
+                                                    "prime"
+                                                ]
+                                            },
+                                            "title": "Math & prime numbers",
+                                            "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
+                                            "image": {
+                                                "url": "http://example.com/math_and_prime.jpg",
+                                                "accessibilityText": "Math & prime numbers"
+                                            }
+                                        },
+                                    ]          
                                         }
                                     }   
                                 ]
@@ -215,7 +251,7 @@ app.post('/reg', function (req, res) {
         
                 });
         
-        }
+        
         
         }
         
