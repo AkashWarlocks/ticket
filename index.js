@@ -74,6 +74,7 @@ app.post('/reg', function (req, res) {
         } else {
             var id_ti = Math.floor(Math.random() * 100) + 1;
             var ticket_obj = {
+                
                 "name": req.body.result &&
                 req.body.result.parameters &&
                 req.body.result.parameters.name,
@@ -90,27 +91,6 @@ app.post('/reg', function (req, res) {
                 
             }
             
-           /* service.name = req.body.result &&
-            req.body.result.parameters &&
-            req.body.result.parameters.name;
-            console.log(" the name - " +service.name);
-            
-            service.issue.push(req.body.result &&
-            req.body.result.parameters &&
-            req.body.result.parameters.issue);
-        
-            service.priority.push( 
-            req.body.result &&
-            req.body.result.parameters &&
-            req.body.result.parameters.priority);
-        
-            service.comment.push(  
-            req.body.result &&
-            req.body.result.parameters &&
-            req.body.result.parameters.comment);
-            
-            var id_ti = Math.floor(Math.random() * 100) + 1;
-            service.tickets.id.push(id_ti);*/
             service.push(ticket_obj);
             console.log(service);
 
@@ -132,9 +112,9 @@ app.post('/reg', function (req, res) {
                                 {
                                     "basicCard": {
                 
-                                        "title": "SERVICE TICKET",
-                                        "subtitle": "ISSUE " +service.issue[service.length - 1] +" \n  ID - " +service.id[service.length - 1],
-                                        "formattedText": "Priority "+service.priority[service.length -1]
+                                        "title": "SERVICE TICKET ID - " + ticket_obj.id,
+                                        "subtitle": "ISSUE " + ticket_obj.issue,
+                                        "formattedText": "Priority "+ ticket_obj.priority, 
                                             
                                     },
                                 }
@@ -142,19 +122,16 @@ app.post('/reg', function (req, res) {
                         }
                     
                     }
-
                 },
                 "contextOut": [
-                    {
-                        "name": "_actions_on_google",
-                        "lifespan": 99,
-                        "parameters": {
+                        {
+                            "name": "_actions_on_google",
+                            "lifespan": 99,
+                            "parameters": {
                             "data": "{}"
                         }
                     }
                 ]
-
-                
                 });
             }
         
@@ -177,10 +154,8 @@ app.post('/reg', function (req, res) {
                                     }
                                 },
                             ]
-                        }
-                       
+                        }  
                     }
-    
                 },
                 "contextOut": [
                     {
