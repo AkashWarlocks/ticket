@@ -167,12 +167,8 @@ app.post('/reg', function (req, res) {
                         "optionInfo": {
                           "key": "first title "
                         },
-                        "description": "first description",
-                        "image": {
-                          "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                          "accessibilityText": "first alt"
-                        },
-                        "title": "first title"
+                        "title": "Service ticket ID - " +service[i].name,
+                        "description": "ISSUE - "+service[i].issue,
                       },
                     )
                 }
