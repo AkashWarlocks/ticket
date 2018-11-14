@@ -57,7 +57,37 @@ app.post('/reg', function (req, res) {
             return res.json({
                 speech: "Can you tell me the priority of the issue ?",
                 displayText: "Can you tell me the priority of the issue ?",
-                source:"google"
+                source:"google",
+                "data": {
+                    "google": {
+                      "expectUserResponse": true,
+                      "richResponse": {
+                        "items": [
+                          {
+                            "simpleResponse": {
+                              "textToSpeech": "Can you tell me the priority of the issue ?"
+                            }
+                          },
+                          
+                        ],
+                        "suggestions": [
+                          {
+                            "title": "high"
+                          },
+                          {
+                            "title": "medium"
+                          },
+                          {
+                            "title": "low"
+                          }
+                        ],
+                        "linkOutSuggestion": {
+                          "destinationName": "Website",
+                          "url": "https://assistant.google.com"
+                        }
+                      }
+                    }
+                  }
         
             });
 
