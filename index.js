@@ -99,7 +99,6 @@ app.post('/reg', function (req, res) {
 
                 "speech": "Issue raised",
                 "displayText": "Issue raised",
-
                 "data":{
                     "google": {
                         "expectedUserResponse":true,
@@ -165,9 +164,9 @@ app.post('/reg', function (req, res) {
                 for (i = 0; i<service.length;i++) {
                     resp.push({
                         "optionInfo": {
-                          "key": "first title "
+                          "key": "ticket - " +service[i].id
                         },
-                        "title": "Service ticket ID - " +service[i].name,
+                        "title": "Service ticket ID - " +service[i].id,
                         "description": "ISSUE - "+service[i].issue,
                       },
                     )
