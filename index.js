@@ -99,55 +99,40 @@ app.post('/reg', function (req, res) {
 
                 "speech": "Issue raised",
                 "displayText": "Issue raised",
-                "data": {
+
+                "data":{
                     "google": {
-                      "expectUserResponse": true,
-                      "richResponse": {
-                        "items": [
-                          {
-                            "simpleResponse": {
-                              "textToSpeech": "Choose a item"
-                            }
-                          }
-                        ]
-                      },
-                      "systemIntent": {
-                        "intent": "actions.intent.OPTION",
-                        "data": {
-                          "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                          "listSelect": {
-                            "title": "Hello",
-                            "items": [
-                              {
-                                "optionInfo": {
-                                  "key": "first title"
+                        "expectedUserResponse":true,
+                        "initialResponse" : {
+                            "items" : [
+                                {
+                                    "simpleResponse" : {
+                                        "textToSpeech":"Service ticket raised successfully. Here is your TICKET"
+                                    }
                                 },
-                                "description": "first description",
-                                "image": {
-                                  "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                                  "accessibilityText": "first alt"
-                                },
-                                "title": "first title"
-                              },
-                              {
-                                "optionInfo": {
-                                  "key": "second"
-                                },
-                                "description": "second description",
-                                "image": {
-                                  "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
-                                  "accessibilityText": "second alt"
-                                },
-                                "title": "second title"
-                              }
+                                {
+                                    "basicCard": {
+                
+                                        "title": "SERVICE TICKET ID - " + ticket_obj.id,
+                                        "subtitle": "ISSUE " + ticket_obj.issue,
+                                        "formattedText": "Priority "+ ticket_obj.priority, 
+                                            
+                                    },
+                                }
                             ]
-                          }
                         }
-                      }
+                    
                     }
-                  }
-               
-            
+                },
+                "contextOut": [
+                        {
+                            "name": "_actions_on_google",
+                            "lifespan": 99,
+                            "parameters": {
+                            "data": "{}"
+                        }
+                    }
+                ]
                 });
             }
         
@@ -180,78 +165,45 @@ app.post('/reg', function (req, res) {
                 for (i = 0; i<service.length;i++) {
                     resp.push({
                         "optionInfo": {
-                            "key": "MATH_AND_PRIME",
-                            "synonyms": [
-                                "math",
-                                "math and prime",
-                                "prime numbers",
-                                "prime"
-                            ]
+                          "key": "first title "
                         },
-                        "title": "Math & prime numbers",
-                        "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
+                        "description": "first description",
                         "image": {
-                            "url": "http://example.com/math_and_prime.jpg",
-                            "accessibilityText": "Math & prime numbers"
-                        }
-                    },
-
+                          "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                          "accessibilityText": "first alt"
+                        },
+                        "title": "first title"
+                      },
                     )
                 }
                 return res.json({
                 
                     "speech": "Raised tickets",
                     "displayText": "this text is displayed visually",
-                    "data":{
+                    "data": {
                         "google": {
-                            "expectedUserResponse":true,
-                            "richResponse" : {
-                                "items" : [
-                                    {
-                                        "simpleResponse" : {
-                                            "textToSpeech": "Your issues are listed below"                                        }
-                                    },
-                                    {
-                                        "listSelect": {
-                        
-                                        "title": "List of issues raised", 
-                                        "items": [
-                                            {
-                                                "optionInfo": {
-                                                    "key": "MATH_AND_PRIME",
-                                                    "synonyms": [
-                                                        "math",
-                                                        "math and prime",
-                                                        "prime numbers",
-                                                        "prime"
-                                                    ]
-                                                },
-                                                "title": "Math & prime numbers",
-                                                "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
-                                                "image": {
-                                                    "url": "http://example.com/math_and_prime.jpg",
-                                                    "accessibilityText": "Math & prime numbers"
-                                                }
-                                            },
-                                        ]          
-                                            }
-                                        }   
-                                    ]
+                          "expectUserResponse": true,
+                          "richResponse": {
+                            "items": [
+                              {
+                                "simpleResponse": {
+                                  "textToSpeech": "Choose a item"
                                 }
-                            
+                              }
+                            ]
+                          },
+                          "systemIntent": {
+                            "intent": "actions.intent.OPTION",
+                            "data": {
+                              "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                              "listSelect": {
+                                "title": "Here are your issues",
+                                "items": resp
+                              }
                             }
-            
-                        },
-                        "contextOut": [
-                            {
-                            "name": "_actions_on_google",
-                            "lifespan": 99,
-                            "parameters": {
-                                "data": "{}"
-                            }
-                            }
-                        ]
-            
+                          }
+                        }
+                      }
                     });
         }
         
