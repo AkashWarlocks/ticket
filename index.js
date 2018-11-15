@@ -245,7 +245,7 @@ app.post('/reg', function (req, res) {
                         },
                         {
                           "basicCard": {
-                              "title": "Service ticket ID " +service[0],id,
+                              "title": "Service ticket ID " +service[0].id,
                               "subtitle":"Name - " + service[0].name,
                               "formattedText": "Issue " +service[0].issue,
                               "image": null,
