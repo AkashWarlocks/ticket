@@ -47,7 +47,37 @@ app.post('/reg', function (req, res) {
             return res.json({
                 speech: "What is the issue ?",
                 displayText: "What is the issue ?",
-                source:"google"
+                source:"google",
+                "data": {
+                    "google": {
+                      "expectUserResponse": true,
+                      "richResponse": {
+                        "items": [
+                          {
+                            "simpleResponse": {
+                              "textToSpeech": "Please tell me your issue ?"
+                            }
+                          },
+                          
+                        ],
+                        "suggestions": [
+                          {
+                            "title": "internet"
+                          },
+                          {
+                            "title": "hardware"
+                          },
+                          {
+                            "title": "admin access"
+                          },
+                          {
+                            "title":"account locked"
+                          }
+                        ],
+                
+                      }
+                    }
+                  }
         
             });
 
@@ -81,10 +111,7 @@ app.post('/reg', function (req, res) {
                             "title": "low"
                           }
                         ],
-                        "linkOutSuggestion": {
-                          "destinationName": "Website",
-                          "url": "https://assistant.google.com"
-                        }
+                
                       }
                     }
                   }
@@ -124,34 +151,44 @@ app.post('/reg', function (req, res) {
             service.push(ticket_obj);
             console.log(service);
            
-                    
             return res.json({
 
                 "speech": "Issue raised",
                 "displayText": "Issue raised",
-                "data":{
-                    "google": {
-                        "expectedUserResponse":true,
-                        "initialResponse" : {
-                            "items" : [
-                                {
-                                    "simpleResponse" : {
-                                        "textToSpeech":"Service ticket raised successfully. Here is your TICKET",
-                                    }
-                                },
-                                {
-                                    "basicCard": {
-                
-                                        "title": "SERVICE TICKET ID - " + ticket_obj.id,
-                                        "subtitle": "ISSUE " + ticket_obj.issue,
-                                        "formattedText": "Priority "+ ticket_obj.priority, 
-                                            
-                                    },
-                                }
-                            ]
-                        }
-                    
+                //ADD CARD HERE TASK REMAININg
+                "data": {
+                  "google": {
+                    "expectUserResponse": true,
+                    "richResponse": {
+                      "items": [
+                        {
+                          "simpleResponse": {
+                            "textToSpeech": "this is a simple response"
+                          }
+                        },
+                        {
+                          "basicCard": {
+                              "title": "Service ticket ID " +ticket_obj.id,
+                              "subTitle":"Name - " + ticket_obj.name,
+                              "formattedText": "Issue " +ticket_obj.issue,
+                              "image": {
+                                  "url": "https://example.google.com/42.png",
+                                  "accessibilityText": "Image alternate text"
+                              },
+                              "buttons": [
+                                  {
+                                      "title": "Read more",
+                                      "openUrlAction": {
+                                          "url": "https://example.google.com/mathandprimes"
+                                      }
+                                  }
+                              ],
+                              "imageDisplayOptions": "CROPPED"
+                          }
+                      }
+                      ]
                     }
+                  },
                 },
                 "contextOut": [
                         {
