@@ -163,26 +163,16 @@ app.post('/reg', function (req, res) {
                       "items": [
                         {
                           "simpleResponse": {
-                            "textToSpeech": "this is a simple response"
+                            "textToSpeech": "Here are your ticket details"
                           }
                         },
                         {
                           "basicCard": {
                               "title": "Service ticket ID " +ticket_obj.id,
-                              "subTitle":"Name - " + ticket_obj.name,
+                              "subtitle":"Name - " + ticket_obj.name,
                               "formattedText": "Issue " +ticket_obj.issue,
-                              "image": {
-                                  "url": "https://example.google.com/42.png",
-                                  "accessibilityText": "Image alternate text"
-                              },
-                              "buttons": [
-                                  {
-                                      "title": "Read more",
-                                      "openUrlAction": {
-                                          "url": "https://example.google.com/mathandprimes"
-                                      }
-                                  }
-                              ],
+                              "image": null,
+                              "buttons": null,
                               "imageDisplayOptions": "CROPPED"
                           }
                       }
@@ -238,7 +228,48 @@ app.post('/reg', function (req, res) {
                       },
                     )
                 }
-                return res.json({
+                if (service.length == 1) {
+                  res.json({
+                    "speech": "Issue raised",
+                "displayText": "Issue raised",
+                //ADD CARD HERE TASK REMAININg
+                "data": {
+                  "google": {
+                    "expectUserResponse": true,
+                    "richResponse": {
+                      "items": [
+                        {
+                          "simpleResponse": {
+                            "textToSpeech": "Here are your ticket details"
+                          }
+                        },
+                        {
+                          "basicCard": {
+                              "title": "Service ticket ID " +service[0],id,
+                              "subtitle":"Name - " + service[0].name,
+                              "formattedText": "Issue " +service[0].issue,
+                              "image": null,
+                              "buttons": null,
+                              "imageDisplayOptions": "CROPPED"
+                          }
+                      }
+                      ]
+                    }
+                  },
+                },
+                "contextOut": [
+                        {
+                            "name": "_actions_on_google",
+                            "lifespan": 99,
+                            "parameters": {
+                            "data": "{}"
+                        }
+                    }
+                ]
+                  })
+
+                } else {
+                  return res.json({
                 
                     "speech": "Raised tickets",
                     "displayText": "this text is displayed visually",
@@ -249,7 +280,7 @@ app.post('/reg', function (req, res) {
                             "items": [
                               {
                                 "simpleResponse": {
-                                  "textToSpeech": "Choose a item"
+                                  "textToSpeech": "Choose a issue to view"
                                 }
                               }
                             ]
@@ -267,6 +298,8 @@ app.post('/reg', function (req, res) {
                         }
                       }
                     });
+                }
+                
         }
         
     }
