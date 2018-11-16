@@ -233,8 +233,8 @@ app.post('/reg', function (req, res) {
                 }
                 if (service.length == 1) {
                   res.json({
-                    "speech": "Issue raised",
-                "displayText": "Issue raised",
+                    "speech": "Your ticket",
+                "displayText": "Your ticket",
                 "data": {
                   "google": {
                     "expectUserResponse": true,
