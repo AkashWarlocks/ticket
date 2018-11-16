@@ -10,7 +10,7 @@ const fs = require('fs');
         "id"
     }
 ]*/
-
+var id_ti = 0;
 
 var service = []     
 
@@ -130,7 +130,7 @@ app.post('/reg', function (req, res) {
 
         } else {
             
-            var id_ti = Math.floor(Math.random() * 100) + 1;
+            id_ti += 1; 
             var ticket_obj = {
                 
                 "name": req.body.result &&
@@ -145,7 +145,7 @@ app.post('/reg', function (req, res) {
                 "comment" :req.body.result &&
                 req.body.result.parameters &&
                 req.body.result.parameters.comment,
-                "id" :id_ti
+                "id" :id_ti,
                 
             }
             
@@ -193,7 +193,7 @@ app.post('/reg', function (req, res) {
                 });
             }
         
-    } else {
+    } else if(req.body.result.metadata.intentName == "ViewTicket") {
            if(service.length == 0) {
             return res.json({
             
@@ -267,7 +267,8 @@ app.post('/reg', function (req, res) {
                             "data": "{}"
                         }
                     }
-                ]
+                ],
+                
                   })
 
                 } else {
@@ -298,12 +299,79 @@ app.post('/reg', function (req, res) {
                             }
                           }
                         }
+                      },
+                      "followupEvent": {
+                        "name": "viewSingleticket",
+                        "parameters": {
+                        "id": 10
+                          }
                       }
                     });
                 }
                 
         }
         
+    } else if (req.body.result.metadata.intentName == "ViewSingleTicket"){
+      res.json({
+        
+          "responseId": "ea166558-615a-48f3-ae5b-7f55d895784b",
+          "queryResult": {
+            "queryText": "actions_intent_OPTION",
+            "action": "",
+            "parameters": {},
+            "allRequiredParamsPresent": true,
+            "fulfillmentText": "",
+            "fulfillmentMessages": [],
+            "outputContexts": [
+              {
+                "name": "projects/${PROJECTID}/agent/sessions/${SESSIONID}/contexts/actions_intent_option",
+                "parameters": {
+                  "OPTION": ""//"key of selected item"
+                }
+              }
+            ],
+            "intent": {
+              "name": "projects/${PROJECTID}/agent/intents/1777d616-a5f7-4838-a9a9-870f2956bd14",
+              "displayName":  "ViewSingleTicket" //"Dialogflow intent name of matched intent"
+            },
+            "intentDetectionConfidence": 1,
+            "diagnosticInfo": {},
+            "languageCode": "en-us"
+          },
+          "originalDetectIntentRequest": {
+            "source": "google",
+            "version": "1",
+            "payload": {
+              "isInSandbox": true,
+              "surface": {
+                "capabilities": []
+              },
+              "inputs": [
+                {
+                  "rawInputs": [
+                    {
+                      "query": "Title of selected item",
+                      "inputType": "TOUCH"
+                    }
+                  ],
+                  "arguments": [
+                    {
+                      "textValue": "Key of selected item",
+                      "name": "OPTION"
+                    }
+                  ],
+                  "intent": "actions.intent.OPTION"
+                }
+              ],
+              "user": {},
+              "conversation": {},
+              "availableSurfaces": []
+            }
+          },
+          "session": "projects/${PROJECTID}/agent/sessions/${SESSIONID}"
+        
+      })
+
     }
       
 }
