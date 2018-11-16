@@ -217,7 +217,8 @@ app.post('/reg', function (req, res) {
     
 
             } else {
-              console.log('Req event - ' +req.body.result); 
+              var requ = JSON.stringify(req.body.result)
+              console.log('Req event - ' +requ); 
                 var resp = []
                 var i;
                 for (i = 0; i<service.length;i++) {
