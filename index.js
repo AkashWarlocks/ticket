@@ -193,7 +193,7 @@ app.post('/reg', function (req, res) {
                 });
             }
         
-    } else if(req.body.result.metadata.intentName == "ViewTicket") {
+    } else /*if(req.body.result.metadata.intentName == "ViewTicket")*/ {
            if(service.length == 0) {
             return res.json({
             
@@ -311,7 +311,7 @@ app.post('/reg', function (req, res) {
                 
         }
         
-    } else if (req.body.result.metadata.intentName == "ViewSingleTicket"){
+    } /*else if (req.body.result.metadata.intentName == "ViewSingleTicket"){
       res.json({
         
           "responseId": "ea166558-615a-48f3-ae5b-7f55d895784b",
@@ -372,7 +372,7 @@ app.post('/reg', function (req, res) {
         
       })
 
-    }
+    }*/
       
 }
 
