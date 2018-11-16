@@ -279,15 +279,7 @@ app.post('/reg', function (req, res) {
                     "data": {
                       "google": {
                         "expectUserResponse": true,
-                        "richResponse": {
-                          "items": [
-                            {
-                              "simpleResponse": {
-                                "textToSpeech": "Choose a item"
-                              }
-                            }
-                          ]
-                        },
+                        
                         "expectedInputs": [
                           {
                               "inputPrompt": {
