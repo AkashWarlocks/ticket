@@ -322,6 +322,7 @@ app.post('/reg', function (req, res) {
                     }
                   });
                 }
+              }
                 
         }
         
