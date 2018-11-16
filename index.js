@@ -277,37 +277,29 @@ app.post('/reg', function (req, res) {
                     "speech": "Raised tickets",
                     "displayText": "this text is displayed visually",
                     "data": {
-                        "google": {
-                          "expectUserResponse": true,
-                          "richResponse": {
-                            "items": [
-                              {
-                                "simpleResponse": {
-                                  "textToSpeech": "Choose a issue to view"
-                                }
-                              }
-                            ]
-                          },
-                          "possibleIntents": [
+                      "google": {
+                        "expectUserResponse": true,
+                        "richResponse": {
+                          "items": [
                             {
-                                "intent": "actions.intent.OPTION",
-                                "inputValueData": {
-                                    "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                                    "listSelect": {
-                                        "title": "Things to learn about",
-                                        "items":resp
-                                    }
-                                }
+                              "simpleResponse": {
+                                "textToSpeech": "Choose a item"
                               }
+                            }
                           ]
-                        }
-                      },
-                      /*"followupEvent": {
-                        "name": "viewSingleticket",
-                        "parameters": {
-                        "id": 10
+                        },
+                        "systemIntent": {
+                          "intent": "actions.intent.OPTION",
+                          "data": {
+                            "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                            "listSelect": {
+                              "title": "Hello",
+                              "items": resp
+                            }
                           }
-                      }*/
+                        }
+                      }
+                    }
                     });
                 }
                 
