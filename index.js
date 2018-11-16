@@ -313,6 +313,8 @@ app.post('/reg', function (req, res) {
         
     } else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
       res.json({
+        "speech": "Selected ticket",
+        "displayText": "this text is displayed visually",
         
           "responseId": "ea166558-615a-48f3-ae5b-7f55d895784b",
           "queryResult": {
