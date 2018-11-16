@@ -236,13 +236,16 @@ app.post('/reg', function (req, res) {
                                 },
                    */
                     resp.push({
-                        "optionInfo": {
-                          "key": service[i].id
-                        },
-                        "title": "Service ticket ID - " +service[i].id,
-                        "description": "ISSUE - "+service[i].issue,
-                        "image":null
+                        
+                      "optionInfo": {
+                        "key": "ticket "+service[i].id
                       },
+                      "description": "first description",
+                      "image": {
+                        "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                        "accessibilityText": "first alt"
+                      },
+                      "title": "first title"
                     )
                 }
                 console.log("List response " +(JSON.stringify(resp)))
