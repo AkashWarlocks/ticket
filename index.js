@@ -245,7 +245,7 @@ app.post('/reg', function (req, res) {
                       },
                     )
                 }
-                console.log("List response " +resp)
+                console.log("List response " +(JSON.stringify(resp)))
                 if (service.length == 1) {
                   res.json({
                     "speech": "Your ticket",
