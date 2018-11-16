@@ -129,6 +129,7 @@ app.post('/reg', function (req, res) {
             });
 
         } else {
+            console.log('Req event - ' +req.body);
             var id_ti = Math.floor(Math.random() * 100) + 1;
             var ticket_obj = {
                 
@@ -232,7 +233,6 @@ app.post('/reg', function (req, res) {
                   res.json({
                     "speech": "Issue raised",
                 "displayText": "Issue raised",
-                //ADD CARD HERE TASK REMAININg
                 "data": {
                   "google": {
                     "expectUserResponse": true,
