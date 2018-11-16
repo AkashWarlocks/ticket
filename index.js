@@ -224,7 +224,7 @@ app.post('/reg', function (req, res) {
                 for (i = 0; i<service.length;i++) {
                     resp.push({
                         "optionInfo": {
-                          "key": "ticket - " +service[i].id
+                          "key": service[i].id
                         },
                         "title": "Service ticket ID - " +service[i].id,
                         "description": "ISSUE - "+service[i].issue,
@@ -312,66 +312,11 @@ app.post('/reg', function (req, res) {
         }
         
     } else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
+
+      
       res.json({
         "speech": "Selected ticket",
-        "displayText": "this text is displayed visually",
-        
-          "responseId": "ea166558-615a-48f3-ae5b-7f55d895784b",
-          "queryResult": {
-            "queryText": "actions_intent_OPTION",
-            "action": "",
-            "parameters": {},
-            "allRequiredParamsPresent": true,
-            "fulfillmentText": "",
-            "fulfillmentMessages": [],
-            "outputContexts": [
-              {
-                "name": "projects/${PROJECTID}/agent/sessions/${SESSIONID}/contexts/actions_intent_option",
-                "parameters": {
-                  "OPTION": "ticket - 1"//"key of selected item"
-                }
-              }
-            ],
-            "intent": {
-              "name": "projects/${PROJECTID}/agent/intents/1777d616-a5f7-4838-a9a9-870f2956bd14",
-              "displayName":  "View_Single_Ticket" //"Dialogflow intent name of matched intent"
-            },
-            "intentDetectionConfidence": 1,
-            "diagnosticInfo": {},
-            "languageCode": "en-us"
-          },
-          "originalDetectIntentRequest": {
-            "source": "google",
-            "version": "1",
-            "payload": {
-              "isInSandbox": true,
-              "surface": {
-                "capabilities": []
-              },
-              "inputs": [
-                {
-                  "rawInputs": [
-                    {
-                      "query": "Service ticket ID - 1",
-                      "inputType": "TOUCH"
-                    }
-                  ],
-                  "arguments": [
-                    {
-                      "textValue": "ticket - 1",
-                      "name": "OPTION"
-                    }
-                  ],
-                  "intent": "actions.intent.OPTION"
-                }
-              ],
-              "user": {},
-              "conversation": {},
-              "availableSurfaces": []
-            }
-          },
-          "session": "projects/${PROJECTID}/agent/sessions/${SESSIONID}"
-        
+        "displayText": "this text is displayed visually",   
       })
 
     }
