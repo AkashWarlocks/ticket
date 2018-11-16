@@ -288,16 +288,31 @@ app.post('/reg', function (req, res) {
                             }
                           ]
                         },
-                        "systemIntent": {
-                          "intent": "actions.intent.OPTION",
-                          "data": {
-                            "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                            "listSelect": {
-                              "title": "Hello",
-                              "items": resp
-                            }
-                          }
-                        }
+                        "expectedInputs": [
+                          {
+                              "inputPrompt": {
+                                  "initialPrompts": [
+                                      {
+                                          "textToSpeech": "Alright! Here are a few things you can learn. Which sounds interesting?"
+                                      }
+                                  ],
+                                  "noInputPrompts": []
+                              },
+                              "possibleIntents": [
+                                  {
+                                      "intent": "actions.intent.OPTION",
+                                      "inputValueData": {
+                                          "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                                          "listSelect": {
+                                              "title": "Things to learn about",
+                                              "items":resp
+                                          }
+                                      }
+                                  }
+                              ]
+                          },
+                        ]
+                       
                       }
                     }
                     });
