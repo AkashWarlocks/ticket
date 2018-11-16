@@ -129,7 +129,7 @@ app.post('/reg', function (req, res) {
             });
 
         } else {
-            console.log('Req event - ' +req.body);
+            
             var id_ti = Math.floor(Math.random() * 100) + 1;
             var ticket_obj = {
                 
@@ -216,7 +216,8 @@ app.post('/reg', function (req, res) {
             });
     
 
-            } else { 
+            } else {
+              console.log('Req event - ' +req.body); 
                 var resp = []
                 var i;
                 for (i = 0; i<service.length;i++) {
