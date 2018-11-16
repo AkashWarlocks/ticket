@@ -279,35 +279,53 @@ app.post('/reg', function (req, res) {
                     "data": {
                       "google": {
                         "expectUserResponse": true,
-                        
-                        "expectedInputs": [
-                          {
-                              "inputPrompt": {
-                                  "initialPrompts": [
-                                      {
-                                          "textToSpeech": "Alright! Here are a few things you can learn. Which sounds interesting?"
-                                      }
-                                  ],
-                                  "noInputPrompts": []
-                              },
-                              "possibleIntents": [
-                                  {
-                                      "intent": "actions.intent.OPTION",
-                                      "inputValueData": {
-                                          "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                                          "listSelect": {
-                                              "title": "Things to learn about",
-                                              "items":resp
-                                          }
-                                      }
-                                  }
+                    
+                        "richResponse": {
+                          "items": [
+                            {
+                              "simpleResponse": {
+                                "textToSpeech": "Choose a item"
+                              }
+                            }
+                          ]
+                        },
+                        "systemIntent": {
+                          "intent": "actions.intent.OPTION",
+                          "data": {
+                            "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                            "listSelect": {
+                              "title": "Hello",
+                              "items": [
+                                {
+                                  "optionInfo": {
+                                    "key": "first title"
+                                  },
+                                  "description": "first description",
+                                  "image": {
+                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                                    "accessibilityText": "first alt"
+                                  },
+                                  "title": "first title"
+                                },
+                                {
+                                  "optionInfo": {
+                                    "key": "second"
+                                  },
+                                  "description": "second description",
+                                  "image": {
+                                    "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                    "accessibilityText": "second alt"
+                                  },
+                                  "title": "second title"
+                                }
                               ]
-                          },
-                        ]
-                       
+                            }
+                          }
+                        }
                       }
+                    
                     }
-                    });
+                  });
                 }
                 
         }
