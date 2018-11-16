@@ -222,6 +222,19 @@ app.post('/reg', function (req, res) {
                 var resp = []
                 var i;
                 for (i = 0; i<service.length;i++) {
+                  /**
+                   * {
+                                  "optionInfo": {
+                                    "key": "first title"
+                                  },
+                                  "description": "first description",
+                                  "image": {
+                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                                    "accessibilityText": "first alt"
+                                  },
+                                  "title": "first title"
+                                },
+                   */
                     resp.push({
                         "optionInfo": {
                           "key": service[i].id
@@ -295,7 +308,30 @@ app.post('/reg', function (req, res) {
                             "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                             "listSelect": {
                               "title": "Hello",
-                              "items":resp
+                              "items":[
+                                {
+                                  "optionInfo": {
+                                    "key": "first title"
+                                  },
+                                  "description": "first description",
+                                  "image": {
+                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                                    "accessibilityText": "first alt"
+                                  },
+                                  "title": "first title"
+                                },
+                                {
+                                  "optionInfo": {
+                                    "key": "second"
+                                  },
+                                  "description": "second description",
+                                  "image": {
+                                    "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                    "accessibilityText": "second alt"
+                                  },
+                                  "title": "second title"
+                                }
+                              ]
                             }
                           }
                         }
