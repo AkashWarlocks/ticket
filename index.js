@@ -246,8 +246,8 @@ app.post('/reg', function (req, res) {
                         "accessibilityText": "first alt"
                       },
                       "title": "first title"
-                    )
-                }
+                    
+                })
                 console.log("List response " +(JSON.stringify(resp)))
                 if (service.length == 1) {
                   res.json({
