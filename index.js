@@ -241,9 +241,11 @@ app.post('/reg', function (req, res) {
                         },
                         "title": "Service ticket ID - " +service[i].id,
                         "description": "ISSUE - "+service[i].issue,
+                        "image":null
                       },
                     )
                 }
+                console.log("List response " +resp)
                 if (service.length == 1) {
                   res.json({
                     "speech": "Your ticket",
