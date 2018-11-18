@@ -239,7 +239,7 @@ app.post('/reg', function (req, res) {
                     resp.push({
                         
                       "optionInfo": {
-                        "key": "ticket "+service[i].id
+                        "key": service[i].id
                       },
                       "description": "first description",
                       "image": {
@@ -329,7 +329,7 @@ app.post('/reg', function (req, res) {
                 
         }else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
           
-          var id_param = console.log("id in follow up"+req.body.result.parameters.id);
+          var id_param = console.log("id in follow up"+req.body.inputs[0].arguments[0].textValue);
       
       res.json({
         "speech": "Selected ticket",
