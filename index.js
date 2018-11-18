@@ -250,7 +250,7 @@ app.post('/reg', function (req, res) {
                     
                 })
                 console.log("List response " +(JSON.stringify(resp)))
-                if (service.length == 1) {
+                if (resp.length == 1) {
                   res.json({
                     "speech": "Your ticket",
                 "displayText": "Your ticket",
