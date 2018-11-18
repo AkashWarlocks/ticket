@@ -193,7 +193,7 @@ app.post('/reg', function (req, res) {
                 });
             }
         
-    } else if(req.body.result.metadata.intentName == "ViewTicket") {
+    } else if(req.body.result.metadata.intentName == "View_ticket") {
            if(service.length == 0) {
             return res.json({
             
@@ -245,7 +245,7 @@ app.post('/reg', function (req, res) {
                         "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                         "accessibilityText": "first alt"
                       },
-                      "title": "first title"
+                      "title": "SERVICE TICKET"
                     
                 })
                 console.log("List response " +(JSON.stringify(resp)))
