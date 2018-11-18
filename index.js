@@ -16,6 +16,8 @@ var service = []
 
 const app = express()
 
+const port = process.env.PORT || 3000
+
 app.use(
     bodyparser.urlencoded({
         extended: false
@@ -339,3 +341,4 @@ app.post('/reg', function (req, res) {
 
 
 )
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
