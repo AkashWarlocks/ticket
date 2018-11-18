@@ -329,7 +329,7 @@ app.post('/reg', function (req, res) {
                 
         }else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
           
-          console.log("id in follow up"+ JSON.stringify(req.body.result));
+          console.log("id in follow up"+ req.body.result.parameters);
       
       res.json({
         "speech": "Selected ticket",
