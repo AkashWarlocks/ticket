@@ -218,7 +218,8 @@ app.post('/reg', function (req, res) {
 
             } else {
               var requ = JSON.stringify(req.body.result)
-              console.log('Req event - ' +requ); 
+              console.log('Req event - ' +requ);
+              console.log('length- ' +service.length); 
                 var resp = []
                 var i;
                 for (i = 0; i<service.length;i++) {
