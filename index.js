@@ -336,12 +336,7 @@ app.post('/reg', function (req, res) {
         "displayText": "this text is displayed visually",   
       })
 
-    }
-        
-    } 
-      
-
-
-
+    }      
+  } 
 )
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
