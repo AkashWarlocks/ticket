@@ -249,6 +249,7 @@ app.post('/reg', function (req, res) {
                       "title": "SERVICE TICKET- " +service[i].id,
                     
                 })
+              }
                 console.log("List response " +(JSON.stringify(resp)));
                 console.log("resp length - "+resp.length);
                 if (resp.length == 1) {
@@ -338,7 +339,7 @@ app.post('/reg', function (req, res) {
 
     }*/
       
-}
+
 
 
 )
