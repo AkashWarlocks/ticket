@@ -193,7 +193,7 @@ app.post('/reg', function (req, res) {
                 });
             }
         
-    } else if(req.body.result.metadata.intentName == "View_ticket") {
+    } else /*if(req.body.result.metadata.intentName == "View_ticket")*/ {
            if(service.length == 0) {
             return res.json({
             
