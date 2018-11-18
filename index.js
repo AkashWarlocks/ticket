@@ -246,10 +246,11 @@ app.post('/reg', function (req, res) {
                         "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                         "accessibilityText": "first alt"
                       },
-                      "title": "SERVICE TICKET"
+                      "title": "SERVICE TICKET- " +service[i].id,
                     
                 })
-                console.log("List response " +(JSON.stringify(resp)))
+                console.log("List response " +(JSON.stringify(resp)));
+                console.log("resp length - "+resp.length);
                 if (resp.length == 1) {
                   res.json({
                     "speech": "Your ticket",
@@ -327,7 +328,7 @@ app.post('/reg', function (req, res) {
                 
         }
         
-    } else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
+    } /*else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
 
       
       res.json({
@@ -335,7 +336,7 @@ app.post('/reg', function (req, res) {
         "displayText": "this text is displayed visually",   
       })
 
-    }
+    }*/
       
 }
 
