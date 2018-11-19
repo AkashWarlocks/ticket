@@ -214,19 +214,6 @@ app.post('/reg', function (req, res) {
                 var resp = []
                 var i;
                 for (i = 0; i<service.length; i++) {
-                  /**
-                   * {
-                                  "optionInfo": {
-                                    "key": "first title"
-                                  },
-                                  "description": "first description",
-                                  "image": {
-                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                                    "accessibilityText": "first alt"
-                                  },
-                                  "title": "first title"
-                                },
-                   */
                     resp.push({
                         
                       "optionInfo": {
@@ -314,15 +301,6 @@ app.post('/reg', function (req, res) {
                       }
                     
                     },
-                    "contextOut": [
-                      {
-                          "name": "_actions_on_google",
-                          "lifespan": 99,
-                          "parameters": {
-                          "data": "{}"
-                      }
-                  }
-              ]
                   });
                 }
               }
