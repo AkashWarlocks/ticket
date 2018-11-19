@@ -1,15 +1,6 @@
 const express = require('express')
 const bodyparser = require('body-parser');
 const fs = require('fs');
-/*var ticket = [
-    {
-        "name":
-        "priority":
-        "issue":
-        "comment"
-        "id"
-    }
-]*/
 var id_ti = 0;
 
 var service = []     
@@ -29,7 +20,7 @@ app.use(
 
 app.post('/reg', function (req, res) {
         
-    if(req.body.result.metadata.intentName === "Service_Ticket")
+    if(req.body.result.metadata.intentName == "Service_Ticket")
     {
         if (!(req.body.result &&
             req.body.result.parameters &&
@@ -193,7 +184,7 @@ app.post('/reg', function (req, res) {
                 });
             }
         
-    } else if(req.body.result.metadata.intentName === "ViewTicket") {
+    } else if(req.body.result.metadata.intentName == "View_ticket") {
            if(service.length == 0) {
             return res.json({
             
@@ -218,10 +209,11 @@ app.post('/reg', function (req, res) {
 
             } else {
               var requ = JSON.stringify(req.body.result)
-              console.log('Req event - ' +requ); 
+              console.log('Req event - ' +requ);
+              console.log('length- ' +service.length); 
                 var resp = []
                 var i;
-                for (i = 0; i<service.length;i++) {
+                for (i = 0; i<service.length; i++) {
                   /**
                    * {
                                   "optionInfo": {
@@ -238,19 +230,20 @@ app.post('/reg', function (req, res) {
                     resp.push({
                         
                       "optionInfo": {
-                        "key": "ticket "+service[i].id
+                        "key": service[i].id
                       },
                       "description": "first description",
                       "image": {
                         "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                         "accessibilityText": "first alt"
                       },
-                      "title": "first title"
+                      "title": "SERVICE TICKET- " +service[i].id,
                     
-                    })
-                }
-                console.log("List response " +(JSON.stringify(resp)))
-                if (service.length == 1) {
+                })
+              }
+                console.log("List response " +(JSON.stringify(resp)));
+                console.log("resp length - "+resp.length);
+                if (resp.length == 1) {
                   res.json({
                     "speech": "Your ticket",
                 "displayText": "Your ticket",
@@ -266,7 +259,7 @@ app.post('/reg', function (req, res) {
                         },
                         {
                           "basicCard": {
-                              "title": service[0].id,
+                              "title": "Service ticket ID " +service[0].id,
                               "subtitle":"Name - " + service[0].name,
                               "formattedText": "Issue " +service[0].issue,
                               "image": null,
@@ -325,20 +318,16 @@ app.post('/reg', function (req, res) {
                 }
               }
                 
-        
-        
-    } else if (req.body.result.metadata.intentName === "View_Single_Ticket"){
-
+        }else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
+          
+          console.log("id in follow up"+ req.body.result.parameters);
       
       res.json({
         "speech": "Selected ticket",
         "displayText": "this text is displayed visually",   
       })
 
-    }
-      
-}
-
-
+    }      
+  } 
 )
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
