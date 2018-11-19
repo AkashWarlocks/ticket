@@ -20,7 +20,7 @@ app.use(
 
 app.post('/reg', function (req, res) {
         
-    if(req.body.result.metadata.intentName == "Service_Ticket")
+    if(req.body.result.metadata.intentName === "Service_Ticket")
     {
         if (!(req.body.result &&
             req.body.result.parameters &&
@@ -184,7 +184,7 @@ app.post('/reg', function (req, res) {
                 });
             }
         
-    } else if(req.body.result.metadata.intentName == "View_ticket") {
+    } else if(req.body.result.metadata.intentName === "View_ticket") {
            if(service.length == 0) {
             return res.json({
             
@@ -230,7 +230,7 @@ app.post('/reg', function (req, res) {
                     resp.push({
                         
                       "optionInfo": {
-                        "key": service[i].id
+                        "key": toString(service[i].id)
                       },
                       "description": "first description",
                       "image": {
@@ -327,7 +327,7 @@ app.post('/reg', function (req, res) {
                 }
               }
                 
-        }else if (req.body.result.metadata.intentName == "View_Single_Ticket"){
+        }else if (req.body.result.metadata.intentName === "View_Single_Ticket"){
           
           console.log("id in follow up"+ req.body.result.parameters);
       
