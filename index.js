@@ -168,7 +168,7 @@ app.post('/reg', function (req, res) {
                               "imageDisplayOptions": "CROPPED"
                           }
                       },
-                      {
+                    ],
                         "suggestions": [
                           {
                             "title": "Create Ticket"
@@ -178,8 +178,8 @@ app.post('/reg', function (req, res) {
                           }
                         ],
                       
-                      }
-                      ]
+                      
+                      
                     }
                   },
                 },
@@ -211,7 +211,7 @@ app.post('/reg', function (req, res) {
                                         "textToSpeech": "You have no tickets raised"
                                     }
                                 },
-                                {
+                              ],
                                   "suggestions": [
                                     {
                                       "title": "Create Ticket"
@@ -221,8 +221,8 @@ app.post('/reg', function (req, res) {
                                     }
                                   ],
                                 
-                                }
-                            ]
+                                
+                            
                         }  
                     }
                 },
@@ -275,19 +275,17 @@ app.post('/reg', function (req, res) {
                               "buttons": null,
                               "imageDisplayOptions": "CROPPED"
                           }
-                      },
-                      {
-                        "suggestions": [
-                          {
-                            "title": "Create Ticket"
-                          },
-                          {
-                            "title": "View Tickets"
-                          }
-                        ],
-                      
-                      }
-                      ]
+                      },                 
+                      ],
+                      "suggestions": [
+                        {
+                          "title": "Create Ticket"
+                        },
+                        {
+                          "title": "View Tickets"
+                        }
+                      ],
+                    
                     }
                   },
                 },
