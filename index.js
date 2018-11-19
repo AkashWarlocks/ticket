@@ -309,6 +309,7 @@ app.post('/reg', function (req, res) {
           
       console.log("id in follow up"+ JSON.stringify (req.body.result));
       var num = req.body.result.parameter.id;
+      typeof num;
 
       res.json({
         "speech": "Selected ticket",
