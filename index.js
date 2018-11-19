@@ -307,11 +307,36 @@ app.post('/reg', function (req, res) {
                 
         }else if (req.body.result.metadata.intentName === "View_Single_Ticket"){
           
-          console.log("id in follow up"+ JSON.stringify (req.body.result));
-      
+      console.log("id in follow up"+ JSON.stringify (req.body.result));
+      var num = req.body.result.parameter.id;
+
       res.json({
         "speech": "Selected ticket",
         "displayText": "this text is displayed visually",   
+        "data": {
+          "google": {
+            "expectUserResponse": true,
+            "richResponse": {
+              "items": [
+                {
+                  "simpleResponse": {
+                    "textToSpeech": "Here are your ticket details"
+                  }
+                },
+                {
+                  "basicCard": {
+                      "title": "Service ticket ID " +service[num - 1].id,
+                      "subtitle":"Name - " + service[num - 1].name,
+                      "formattedText": "Issue " +service[num - 1].issue,
+                      "image": null,
+                      "buttons": null,
+                      "imageDisplayOptions": "CROPPED"
+                  }
+              }
+              ]
+            }
+          },
+        },
       })
 
     }      
