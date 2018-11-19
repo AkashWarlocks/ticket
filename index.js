@@ -311,7 +311,7 @@ app.post('/reg', function (req, res) {
       var num = req.body.result &&
       req.body.result.parameters &&
       req.body.result.parameters.id;
-      typeof num;
+      console.log("Type of id is " +typeof num);
 
       res.json({
         "speech": "Selected ticket",
