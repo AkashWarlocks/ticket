@@ -308,7 +308,9 @@ app.post('/reg', function (req, res) {
         }else if (req.body.result.metadata.intentName === "View_Single_Ticket"){
           
       console.log("id in follow up"+ JSON.stringify (req.body.result));
-      var num = req.body.result.parameter.id;
+      var num = req.body.result &&
+      req.body.result.parameters &&
+      req.body.result.parameters.id;
       typeof num;
 
       res.json({
