@@ -367,7 +367,7 @@ app.post('/reg', function (req, res) {
                       "imageDisplayOptions": "CROPPED"
                   }
               },
-              {
+            ],
                 "suggestions": [
                   {
                     "title": "Create Ticket"
@@ -375,11 +375,7 @@ app.post('/reg', function (req, res) {
                   {
                     "title": "View Tickets"
                   }
-                ],
-              
-              }
-              
-              ]
+                ],              
             }
           },
         },
