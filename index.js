@@ -230,7 +230,7 @@ app.post('/reg', function (req, res) {
                     resp.push({
                         
                       "optionInfo": {
-                        "key": toString(service[i].id)
+                        "key": service[i].id.toString()
                       },
                       "description": "first description",
                       "image": {
