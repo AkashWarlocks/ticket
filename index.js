@@ -121,7 +121,7 @@ app.post('/reg', function (req, res) {
 
         } else {
 
-            var id_ti = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000; 
+            var id_ti = Math.floor(Math.random() * (99999 - 10000 + 1) ) + 10000; 
             console.log("id number - "+id_ti);
             var ticket_obj = {
 
@@ -218,16 +218,16 @@ app.post('/reg', function (req, res) {
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
                     var image = "https://github.com/AkashWarlockz/ticket/blob/master/internet.jpg"
-
+                    var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
                     var image = "https://github.com/AkashWarlockz/ticket/blob/master/hardware.jpg"
-
+                    var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
                     var image = "https://github.com/AkashWarlockz/ticket/blob/master/acclocked.jpg"
-
+                    var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
                     var image = "https://github.com/AkashWarlockz/ticket/blob/master/admin.jpg"
-
+                    var accText = "Admin"
                   }
                     resp.push({
                         
@@ -237,7 +237,7 @@ app.post('/reg', function (req, res) {
                       "description": "first description",
                       "image": {
                         "url": image,
-                        "accessibilityText": "first alt"
+                        "accessibilityText": accText
                       },
                       "title": "SERVICE TICKET- " +service[i].id,
                     
