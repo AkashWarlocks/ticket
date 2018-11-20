@@ -217,16 +217,16 @@ app.post('/reg', function (req, res) {
                 var i;
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/internet.jpg?raw=true"
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/internet.png"
                     var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/hardware.png?raw=true"
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/hardware.png"
                     var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/acclocked.png?raw=true"
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/acclocked.png"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
-                    var image = " "
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/admin.png"
                     var accText = "Admin"
                   }
                     resp.push({
