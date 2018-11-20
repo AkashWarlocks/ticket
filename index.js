@@ -226,7 +226,7 @@ app.post('/reg', function (req, res) {
                     var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/acclocked.png?raw=true"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/admin.jpg?raw=true"
+                    var image = " "
                     var accText = "Admin"
                   }
                     resp.push({
@@ -263,7 +263,7 @@ app.post('/reg', function (req, res) {
                           "basicCard": {
                               "title": "Service ticket ID " +service[0].id,
                               "subtitle":"Name - " + service[0].name,
-                              "formattedText": "Issue " +service[0].issue,   
+                              "formattedText": "**Issue:** " +service[0].issue+"  \n**Priority:** "+service[0].priority,   
                           }
                       },                 
                       ],
@@ -349,7 +349,7 @@ app.post('/reg', function (req, res) {
                   "basicCard": {
                       "title": "Service ticket ID " +service[num].id,
                       "subtitle":"Category: " +service[num].issue,
-                      "formattedText": "Issue: "+service[num].comment,
+                      "formattedText": "**Issue:** " +service[num].issue+"  \n**Priority:** "+service[num].priority,
                   }
               },
             ],
