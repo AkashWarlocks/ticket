@@ -120,11 +120,11 @@ app.post('/reg', function (req, res) {
           });
 
         } else {
-            
+
             var id_ti = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000; 
             console.log("id number - "+id_ti);
             var ticket_obj = {
-                
+
                 "name": req.body.result &&
                 req.body.result.parameters &&
                 req.body.result.parameters.name,
@@ -138,15 +138,14 @@ app.post('/reg', function (req, res) {
                 req.body.result.parameters &&
                 req.body.result.parameters.comment,
                 "id" :"INC"+id_ti,
-                
+
             }
-            
+
             service.push(ticket_obj);
             console.log(service);
-           
             return res.json({
 
-                "speech": "Issue raised",
+              "speech": "Issue raised",
                 "displayText": "Issue raised",
                 //ADD CARD HERE TASK REMAININg
                 "data": {
@@ -162,8 +161,8 @@ app.post('/reg', function (req, res) {
                         {
                           "basicCard": {
                               "title": "Service ticket ID " +ticket_obj.id,
-                              "subtitle":"Name - " + ticket_obj.name,
-                              "formattedText": "Issue " +ticket_obj.issue,
+                              "subtitle":"Category: " + ticket_obj.issue,
+                              "formattedText": "Issue " +ticket_obj.comment,
                               "image": "{}",
                               "buttons": "{}",
                               
@@ -192,11 +191,11 @@ app.post('/reg', function (req, res) {
                 ]
                 });
             }
-          
+
     } else if(req.body.result.metadata.intentName === "View_ticket") {
-           if(service.length == 0) {
+           if(service.length === 0) {
             return res.json({
-            
+
                 "speech": "No tickets raised",
                 "displayText": "this text is displayed visually",
                 "data":{
@@ -222,9 +221,7 @@ app.post('/reg', function (req, res) {
                     }
                 },
             });
-    
-
-            } else {
+           } else {
               var requ = JSON.stringify(req.body.result)
               console.log('Req event - ' +requ);
               console.log('length- ' +service.length); 
