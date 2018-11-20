@@ -21,17 +21,7 @@ app.post('/reg', function (req, res) {
     var id_ti = 1000;    
     if(req.body.result.metadata.intentName === "Service_Ticket")
     {
-        if (!(req.body.result &&
-            req.body.result.parameters &&
-            req.body.result.parameters.name)) {
-            return res.json({
-                speech: "Can i Know Your name ??",
-                displayText: "Can i Know Your name",
-                source:"google"
-    
-            });
-
-        } else if (!(req.body.result &&
+         if (!(req.body.result &&
             req.body.result.parameters &&
             req.body.result.parameters.issue)) {
             return res.json({
@@ -117,6 +107,17 @@ app.post('/reg', function (req, res) {
                 source:"google"
         
             });
+        
+
+        } else if (!(req.body.result &&
+          req.body.result.parameters &&
+          req.body.result.parameters.name)) {
+          return res.json({
+              speech: "Can i Know Your name ??",
+              displayText: "Can i Know Your name",
+              source:"google"
+  
+          });
 
         } else {
             
@@ -162,9 +163,9 @@ app.post('/reg', function (req, res) {
                               "title": "Service ticket ID " +ticket_obj.id,
                               "subtitle":"Name - " + ticket_obj.name,
                               "formattedText": "Issue " +ticket_obj.issue,
-                              "image": null,
-                              "buttons": null,
-                              "imageDisplayOptions": "CROPPED"
+                              "image": {},
+                              "buttons": {},
+                              
                           }
                       },
                     ],
@@ -193,7 +194,7 @@ app.post('/reg', function (req, res) {
                 ]
                 });
             }
-        
+          
     } else if(req.body.result.metadata.intentName === "View_ticket") {
            if(service.length == 0) {
             return res.json({
@@ -236,16 +237,16 @@ app.post('/reg', function (req, res) {
                 var i;
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
-                    var image = "images/internet.jpg"
+                    var image = "internet.jpg"
 
                   } else if (service[i].issue === "hardware") {
-                    var image = "images/hardware.png"
+                    var image = "hardware.png"
 
                   } else if (service[i].issue === "account locked") {
-                    var image = "images/acclocked.png"
+                    var image = "acclocked.png"
 
                   }else if (service[i].issue === "admin access") {
-                    var image = "images/admin.jpg"
+                    var image = "admin.jpg"
 
                   }
                     resp.push({
@@ -283,9 +284,9 @@ app.post('/reg', function (req, res) {
                               "title": "Service ticket ID " +service[0].id,
                               "subtitle":"Name - " + service[0].name,
                               "formattedText": "Issue " +service[0].issue,
-                              "image": null,
-                              "buttons": null,
-                              "imageDisplayOptions": "CROPPED"
+                              "image": {},
+                              "buttons": {},
+                              
                           }
                       },                 
                       ],
@@ -373,9 +374,9 @@ app.post('/reg', function (req, res) {
                       "title": "Service ticket ID " +service[num - 1].id,
                       "subtitle":"Category: " +service[num - 1].issue,
                       "formattedText": "Issue: "+service[num-1].comment,
-                      "image": null,
-                      "buttons": null,
-                      "imageDisplayOptions": "CROPPED"
+                      "image": {},
+                      "buttons": {},
+                      
                   }
               },
             ],
