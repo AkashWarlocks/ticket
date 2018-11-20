@@ -122,6 +122,7 @@ app.post('/reg', function (req, res) {
         } else {
             
             var id_ti = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000; 
+            console.log("id number - "+id_ti);
             var ticket_obj = {
                 
                 "name": req.body.result &&
