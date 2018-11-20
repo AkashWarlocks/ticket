@@ -220,10 +220,10 @@ app.post('/reg', function (req, res) {
                     var image = "https://github.com/AkashWarlockz/ticket/blob/master/internet.jpg"
                     var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/hardware.jpg"
+                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/hardware.png"
                     var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/acclocked.jpg"
+                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/acclocked.png"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
                     var image = "https://github.com/AkashWarlockz/ticket/blob/master/admin.jpg"
