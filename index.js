@@ -217,16 +217,16 @@ app.post('/reg', function (req, res) {
                 var i;
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/internet.png"
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/internet-min.png"
                     var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/hardware.png"
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/hardware-min.png"
                     var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/acclocked.png"
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/acclocked-min.png"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/admin.png"
+                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/admin-min.png"
                     var accText = "Admin"
                   }
                     resp.push({
@@ -263,7 +263,7 @@ app.post('/reg', function (req, res) {
                           "basicCard": {
                               "title": "Service ticket ID " +service[0].id,
                               "subtitle":"Name - " + service[0].name,
-                              "formattedText": "**Issue:** " +service[0].issue+"  \n**Priority:** "+service[0].priority,   
+                              "formattedText": "**Issue:** " +service[0].comment+"  \n**Priority:** "+service[0].priority,   
                           }
                       },                 
                       ],
@@ -349,7 +349,7 @@ app.post('/reg', function (req, res) {
                   "basicCard": {
                       "title": "Service ticket ID " +service[num].id,
                       "subtitle":"Category: " +service[num].issue,
-                      "formattedText": "**Issue:** " +service[num].issue+"  \n**Priority:** "+service[num].priority,
+                      "formattedText": "**Issue:** " +service[num].comment+"  \n**Priority:** "+service[num].priority,
                   }
               },
             ],
