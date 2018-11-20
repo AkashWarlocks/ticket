@@ -42,16 +42,16 @@ app.post('/reg', function (req, res) {
                         ],
                         "suggestions": [
                           {
-                            "title": "internet"
+                            "title": "Internet"
                           },
                           {
-                            "title": "hardware"
+                            "title": "Hardware"
                           },
                           {
-                            "title": "admin access"
+                            "title": "Admin Access"
                           },
                           {
-                            "title":"account locked"
+                            "title":"Account Locked"
                           }
                         ],
                 
@@ -113,8 +113,8 @@ app.post('/reg', function (req, res) {
           req.body.result.parameters &&
           req.body.result.parameters.name)) {
           return res.json({
-              speech: "Can i Know Your name ??",
-              displayText: "Can i Know Your name",
+              speech: "Can I know your good name please ?",
+              displayText: "Can I know your name ?",
               source:"google"
   
           });
@@ -234,7 +234,7 @@ app.post('/reg', function (req, res) {
                       "optionInfo": {
                         "key": i.toString()
                       },
-                      "description": "first description",
+                      "description": "",
                       "image": {
                         "url": image,
                         "accessibilityText": accText
@@ -247,8 +247,8 @@ app.post('/reg', function (req, res) {
                 console.log("resp length - "+resp.length);
                 if (resp.length == 1) {
                   res.json({
-                    "speech": "Your ticket",
-                "displayText": "Your ticket",
+                    "speech": "Okay I can get that for you.",
+                "displayText": "Okay I can get that for you.",
                 "data": {
                   "google": {
                     "expectUserResponse": true,
@@ -256,7 +256,7 @@ app.post('/reg', function (req, res) {
                       "items": [
                         {
                           "simpleResponse": {
-                            "textToSpeech": "So this is the ticket raised by you"+service[0].name,
+                            "textToSpeech": "So "+service[0].name+" this is the ticket raised by you",
                           }
                         },
                         {
@@ -293,8 +293,8 @@ app.post('/reg', function (req, res) {
                 } else {
                   return res.json({
                 
-                    "speech": "Raised tickets",
-                    "displayText": "this text is displayed visually",
+                    "speech": "Okay I will get list of issues raised in the form of list",
+                    "displayText": "Now you can see all the issue raised.",
                     "data": {
                       "google": {
                         "expectUserResponse": true,
@@ -303,7 +303,7 @@ app.post('/reg', function (req, res) {
                           "items": [
                             {
                               "simpleResponse": {
-                                "textToSpeech": "Hey this are the issues raised"
+                                "textToSpeech": "Okay you can view the list of issues raised.  \nClick on any issue to see the details"
                               }
                             }
                           ]
@@ -313,7 +313,7 @@ app.post('/reg', function (req, res) {
                           "data": {
                             "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                             "listSelect": {
-                              "title": "Hello",
+                              "title": "Issue List",
                               "items":resp,
                             }
                           }
@@ -333,8 +333,8 @@ app.post('/reg', function (req, res) {
       req.body.result.parameters.id;
 
       res.json({
-        "speech": "Selected ticket",
-        "displayText": "this text is displayed visually",   
+        "speech": "The selected ticket is raised by "+service[num].name,
+        "displayText": "This card contains all the details of ticket you have selected",   
         "data": {
           "google": {
             "expectUserResponse": true,
