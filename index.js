@@ -18,7 +18,7 @@ app.use(
 
 app.post('/reg', function (req, res) {
   
-    var id_ti = 1000;    
+        
     if(req.body.result.metadata.intentName === "Service_Ticket")
     {
          if (!(req.body.result &&
@@ -121,7 +121,7 @@ app.post('/reg', function (req, res) {
 
         } else {
             
-            id_ti += 1; 
+            var id_ti = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000; 
             var ticket_obj = {
                 
                 "name": req.body.result &&
@@ -163,8 +163,8 @@ app.post('/reg', function (req, res) {
                               "title": "Service ticket ID " +ticket_obj.id,
                               "subtitle":"Name - " + ticket_obj.name,
                               "formattedText": "Issue " +ticket_obj.issue,
-                              "image": null,
-                              "buttons": null,
+                              "image": "{}",
+                              "buttons": "{}",
                               
                           }
                       },
@@ -216,10 +216,7 @@ app.post('/reg', function (req, res) {
                                     {
                                       "title": "View Tickets"
                                     }
-                                  ],
-                                
-                                
-                            
+                                  ], 
                         }  
                     }
                 },
@@ -273,7 +270,7 @@ app.post('/reg', function (req, res) {
                       "items": [
                         {
                           "simpleResponse": {
-                            "textToSpeech": "Here are your ticket details"
+                            "textToSpeech": "So this is the ticket raised by you"+service[0].name,
                           }
                         },
                         {
@@ -281,9 +278,8 @@ app.post('/reg', function (req, res) {
                               "title": "Service ticket ID " +service[0].id,
                               "subtitle":"Name - " + service[0].name,
                               "formattedText": "Issue " +service[0].issue,
-                              "image": {},
-                              "buttons": {},
-                              
+                              "image": "{}",
+                              "buttons": "{}",     
                           }
                       },                 
                       ],
@@ -295,14 +291,13 @@ app.post('/reg', function (req, res) {
                           "title": "View Tickets"
                         }
                       ],
-                    
                     }
                   },
                 },
                 "contextOut": [
                         {
                             "name": "_actions_on_google",
-                            "lifespan": 99,
+                            "lifespan": 2,
                             "parameters": {
                             "data": "{}"
                         }
@@ -371,8 +366,8 @@ app.post('/reg', function (req, res) {
                       "title": "Service ticket ID " +service[num - 1].id,
                       "subtitle":"Category: " +service[num - 1].issue,
                       "formattedText": "Issue: "+service[num-1].comment,
-                      "image": {},
-                      "buttons": {},
+                      "image": "{}",
+                      "buttons": "{}",
                       
                   }
               },
