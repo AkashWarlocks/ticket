@@ -107,7 +107,7 @@ app.post('/reg', function (req, res) {
                 source:"google"
         
             });
-        
+
 
         } else if (!(req.body.result &&
           req.body.result.parameters &&
@@ -163,9 +163,8 @@ app.post('/reg', function (req, res) {
                               "title": "Service ticket ID " +ticket_obj.id,
                               "subtitle":"Category: " + ticket_obj.issue,
                               "formattedText": "Issue " +ticket_obj.comment,
-                              "image": "{}",
-                              "buttons": "{}",
-                              
+                              /*"image": "{}",
+                              "buttons": "{}",*/
                           }
                       },
                     ],
@@ -180,15 +179,6 @@ app.post('/reg', function (req, res) {
                     }
                   },
                 },
-                "contextOut": [
-                        {
-                            "name": "_actions_on_google",
-                            "lifespan": 99,
-                            "parameters": {
-                            "data": "{}"
-                        }
-                    }
-                ]
                 });
             }
 
@@ -356,14 +346,14 @@ app.post('/reg', function (req, res) {
               "items": [
                 {
                   "simpleResponse": {
-                    "textToSpeech": "Hey "+service[num - 1].name+" the details of the issue raised by you are"
+                    "textToSpeech": "Hey "+service[num].name+" the details of the issue raised by you are"
                   }
                 },
                 {
                   "basicCard": {
-                      "title": "Service ticket ID " +service[num - 1].id,
-                      "subtitle":"Category: " +service[num - 1].issue,
-                      "formattedText": "Issue: "+service[num-1].comment,
+                      "title": "Service ticket ID " +service[num].id,
+                      "subtitle":"Category: " +service[num].issue,
+                      "formattedText": "Issue: "+service[num].comment,
                       "image": "{}",
                       "buttons": "{}",
                       
