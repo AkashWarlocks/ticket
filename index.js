@@ -82,13 +82,13 @@ app.post('/reg', function (req, res) {
                         ],
                         "suggestions": [
                           {
-                            "title": "high"
+                            "title": "High"
                           },
                           {
-                            "title": "medium"
+                            "title": "Medium"
                           },
                           {
-                            "title": "low"
+                            "title": "Low"
                           }
                         ],
                 
@@ -217,16 +217,16 @@ app.post('/reg', function (req, res) {
                 var i;
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/internet.jpg"
+                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/imagesinternet.jpg"
                     var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
-                    var image = "https://cdn4.iconfinder.com/data/icons/proglyphs-communication-and-devices/512/Laptop-512.png"
+                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/images/hardware.png"
                     var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
-                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/acclocked.png"
+                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/images/acclocked.png"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
-                    var image = "https://cdn4.iconfinder.com/data/icons/proglyphs-communication-and-devices/512/Laptop-512.png"
+                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/images/admin.jpg"
                     var accText = "Admin"
                   }
                     resp.push({
