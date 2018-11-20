@@ -263,9 +263,7 @@ app.post('/reg', function (req, res) {
                           "basicCard": {
                               "title": "Service ticket ID " +service[0].id,
                               "subtitle":"Name - " + service[0].name,
-                              "formattedText": "Issue " +service[0].issue,
-                              "image": "{}",
-                              "buttons": "{}",     
+                              "formattedText": "Issue " +service[0].issue,   
                           }
                       },                 
                       ],
@@ -352,9 +350,6 @@ app.post('/reg', function (req, res) {
                       "title": "Service ticket ID " +service[num].id,
                       "subtitle":"Category: " +service[num].issue,
                       "formattedText": "Issue: "+service[num].comment,
-                      "image": "{}",
-                      "buttons": "{}",
-                      
                   }
               },
             ],
