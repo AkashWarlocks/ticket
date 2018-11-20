@@ -217,16 +217,16 @@ app.post('/reg', function (req, res) {
                 var i;
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
-                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/imagesinternet.jpg"
+                    var image = "https://drive.google.com/open?id=16RL4JMMViXmE9TU4Qke-gfFt9zePxC40"
                     var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
-                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/images/hardware.png"
+                    var image = "https://drive.google.com/open?id=1lkhdztsMdagblBmF2K1gtfsYvBTwRBFR"
                     var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
-                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/images/acclocked.png"
+                    var image = "https://drive.google.com/open?id=1BUcBw5g_STTBQGBAn5ika78j1W8Etu52"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
-                    var image = "https://github.com/AkashWarlockz/ticket/tree/master/images/admin.jpg"
+                    var image = "https://drive.google.com/open?id=1y5HiLPyU-xq1RdqK_DemMehEdGg4K-4V"
                     var accText = "Admin"
                   }
                     resp.push({
