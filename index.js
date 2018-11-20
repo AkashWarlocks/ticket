@@ -162,9 +162,7 @@ app.post('/reg', function (req, res) {
                           "basicCard": {
                               "title": "Service ticket ID " +ticket_obj.id,
                               "subtitle":"Category: " + ticket_obj.issue,
-                              "formattedText": "Issue " +ticket_obj.comment,
-                              "image": "{}",
-                              "buttons": "{}",
+                              "formattedText": "**Issue**: " +ticket_obj.comment+"  \n**Priority**: "+ticket_obj.priority,
                           }
                       },
                     ],
