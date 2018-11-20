@@ -163,8 +163,8 @@ app.post('/reg', function (req, res) {
                               "title": "Service ticket ID " +ticket_obj.id,
                               "subtitle":"Category: " + ticket_obj.issue,
                               "formattedText": "Issue " +ticket_obj.comment,
-                              /*"image": "{}",
-                              "buttons": "{}",*/
+                              "image": "{}",
+                              "buttons": "{}",
                           }
                       },
                     ],
