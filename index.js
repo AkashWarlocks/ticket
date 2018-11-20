@@ -217,16 +217,16 @@ app.post('/reg', function (req, res) {
                 var i;
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
-                    var image = "https://drive.google.com/open?id=16RL4JMMViXmE9TU4Qke-gfFt9zePxC40"
+                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/internet.jpg?raw=true"
                     var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
-                    var image = "https://drive.google.com/open?id=1lkhdztsMdagblBmF2K1gtfsYvBTwRBFR"
+                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/hardware.png?raw=true"
                     var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
-                    var image = "https://drive.google.com/open?id=1BUcBw5g_STTBQGBAn5ika78j1W8Etu52"
+                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/acclocked.png?raw=true"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
-                    var image = "https://drive.google.com/open?id=1y5HiLPyU-xq1RdqK_DemMehEdGg4K-4V"
+                    var image = "https://github.com/AkashWarlockz/ticket/blob/master/images/admin.jpg?raw=true"
                     var accText = "Admin"
                   }
                     resp.push({
@@ -234,7 +234,7 @@ app.post('/reg', function (req, res) {
                       "optionInfo": {
                         "key": i.toString()
                       },
-                      "description": "",
+                      "description": "Raised by: "+service[i].name,
                       "image": {
                         "url": image,
                         "accessibilityText": accText
