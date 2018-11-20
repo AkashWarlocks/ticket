@@ -1,7 +1,5 @@
 const express = require('express')
 const bodyparser = require('body-parser');
-const fs = require('fs');
-var id_ti = 0;
 
 var service = []     
 
@@ -19,7 +17,8 @@ app.use(
 );
 
 app.post('/reg', function (req, res) {
-        
+  
+    var id_ti = 1000;    
     if(req.body.result.metadata.intentName === "Service_Ticket")
     {
         if (!(req.body.result &&
@@ -136,7 +135,7 @@ app.post('/reg', function (req, res) {
                 "comment" :req.body.result &&
                 req.body.result.parameters &&
                 req.body.result.parameters.comment,
-                "id" :id_ti,
+                "id" :"INC"+id_ti,
                 
             }
             
@@ -236,14 +235,27 @@ app.post('/reg', function (req, res) {
                 var resp = []
                 var i;
                 for (i = 0; i<service.length; i++) {
+                  if(service[i].issue === "internet") {
+                    var image = "images/internet.jpg"
+
+                  } else if (service[i].issue === "hardware") {
+                    var image = "images/hardware.png"
+
+                  } else if (service[i].issue === "account locked") {
+                    var image = "images/acclocked.png"
+
+                  }else if (service[i].issue === "admin access") {
+                    var image = "images/admin.jpg"
+
+                  }
                     resp.push({
                         
                       "optionInfo": {
-                        "key": service[i].id.toString()
+                        "key": i.toString()
                       },
                       "description": "first description",
                       "image": {
-                        "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                        "url": image,
                         "accessibilityText": "first alt"
                       },
                       "title": "SERVICE TICKET- " +service[i].id,
@@ -314,7 +326,7 @@ app.post('/reg', function (req, res) {
                           "items": [
                             {
                               "simpleResponse": {
-                                "textToSpeech": "Choose a item"
+                                "textToSpeech": "Hey this are the issues raised"
                               }
                             }
                           ]
@@ -342,7 +354,6 @@ app.post('/reg', function (req, res) {
       var num = req.body.result &&
       req.body.result.parameters &&
       req.body.result.parameters.id;
-      console.log("Type of id is " +typeof num);
 
       res.json({
         "speech": "Selected ticket",
@@ -354,14 +365,14 @@ app.post('/reg', function (req, res) {
               "items": [
                 {
                   "simpleResponse": {
-                    "textToSpeech": "Here are your ticket details"
+                    "textToSpeech": "Hey "+service[num - 1].name+" the details of the issue raised by you are"
                   }
                 },
                 {
                   "basicCard": {
                       "title": "Service ticket ID " +service[num - 1].id,
-                      "subtitle":"Name - " + service[num - 1].name,
-                      "formattedText": "Issue " +service[num - 1].issue,
+                      "subtitle":"Category: " +service[num - 1].issue,
+                      "formattedText": "Issue: "+service[num-1].comment,
                       "image": null,
                       "buttons": null,
                       "imageDisplayOptions": "CROPPED"
