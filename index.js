@@ -445,7 +445,7 @@ app.post('/reg', function (req, res) {
                                 "url": "http://example.com/recipe",
                                 "accessibilityText": "third alt"
                               },
-                              "title": "second title"
+                              "title": "third title"
                             }
                           ]
                         }
