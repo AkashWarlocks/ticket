@@ -367,15 +367,69 @@ app.post('/reg', function (req, res) {
         },
       })
     } else if(req.body.result.metadata.intentName === "Category_ticket") {
-            request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
+      var data; 
+      var category_issue = [];
+      request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
             if(err) {
               console.log('error: '+err)
             }
             console.log((body.SERVICE_TKTS_RES))    
+            data = body;
+      });
+
+      for(var i = 0;i<data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
+        category_issue.push({
+          "title": "Title of item 1",
+          "description": "Description of item 1",
+          "footer": "Item 1 footer",
+          "image": {
+            "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
+            "accessibilityText": "Google Assistant Bubbles"
+          },
+          "openUrlAction": {
+            "url": "https://github.com"
+          }
+        });
+
+      }
+      category_issue.push({
+        "title": "Title of item 1",
+        "description": "Description of item 1",
+        "footer": "Item 1 footer",
+        "image": {
+          "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
+          "accessibilityText": "Google Assistant Bubbles"
+        },
+        "openUrlAction": {
+          "url": "https://github.com"
+        }
       });
       res.json({
         "speech": "The selected ticket is raised by ",  
-        "displayText": "This card contains all the details of ticket you have selected",  
+        "displayText": "This card contains all the details of ticket you have selected",
+        "data": {
+          "google": {
+            "expectUserResponse": true,
+        
+            "richResponse": {
+              "items": [
+                {
+                  "simpleResponse": {
+                    "textToSpeech": "Okay you can view the list of issues raised.  \nClick on any issue to see the details"
+                  }
+                },
+                {
+                  "carouselBrowse": {
+                    "items": category_issue,
+                  }
+                }
+              ]
+            },
+           
+          }
+        
+        },
+          
       })
     }
   } 
