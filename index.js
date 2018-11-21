@@ -1,5 +1,6 @@
-const express = require('express')
+const express = require('express');
 const bodyparser = require('body-parser');
+const request = require('request');
 
 var service = []     
 
@@ -365,7 +366,6 @@ app.post('/reg', function (req, res) {
           },
         },
       })
-
     } else if(req.body.result.metadata.intentName === "Category_ticket") {
             request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
             if(err) {
@@ -374,7 +374,7 @@ app.post('/reg', function (req, res) {
             console.log((body.SERVICE_TKTS_RES))    
       });
       res.json({
-        "speech": "The selected ticket is raised by ",
+        "speech": "The selected ticket is raised by ",  
         "displayText": "This card contains all the details of ticket you have selected",  
       })
     }
