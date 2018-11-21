@@ -411,7 +411,7 @@ app.post('/reg', function (req, res) {
                 }
                 
             })
-            data = JSON.parse(JSON.stringify(body));
+            data = JSON.stringify(body);
             console.log("DATA: "+data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS)
            
           });
