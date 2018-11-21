@@ -373,37 +373,26 @@ app.post('/reg', function (req, res) {
             if(err) {
               console.log('error: '+err)
             }
-            console.log((body.SERVICE_TKTS_RES))    
-            data = body;
-      });
+            console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS))    
+            for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
+              category_issue.push({
+                "title": "Title of item 1",
+                "description": "Description of item 1",
+                "footer": "Item 1 footer",
+                "image": {
+                  "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
+                  "accessibilityText": "Google Assistant Bubbles"
+                },
+                "openUrlAction": {
+                  "url": "https://github.com"
+                }
+              });
+      
+            }
+           
+          });
 
-      for(var i = 0;i<data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
-        category_issue.push({
-          "title": "Title of item 1",
-          "description": "Description of item 1",
-          "footer": "Item 1 footer",
-          "image": {
-            "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
-            "accessibilityText": "Google Assistant Bubbles"
-          },
-          "openUrlAction": {
-            "url": "https://github.com"
-          }
-        });
-
-      }
-      category_issue.push({
-        "title": "Title of item 1",
-        "description": "Description of item 1",
-        "footer": "Item 1 footer",
-        "image": {
-          "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
-          "accessibilityText": "Google Assistant Bubbles"
-        },
-        "openUrlAction": {
-          "url": "https://github.com"
-        }
-      });
+     
       res.json({
         "speech": "The selected ticket is raised by ",  
         "displayText": "This card contains all the details of ticket you have selected",
