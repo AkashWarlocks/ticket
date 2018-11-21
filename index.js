@@ -440,10 +440,10 @@ app.post('/reg', function (req, res) {
                               "optionInfo": {
                                 "key": "third"
                               },
-                              "description": "second description",
+                              "description": "third description",
                               "image": {
                                 "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
-                                "accessibilityText": "second alt"
+                                "accessibilityText": "third alt"
                               },
                               "title": "second title"
                             }
