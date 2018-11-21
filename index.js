@@ -380,7 +380,7 @@ app.post('/reg', function (req, res) {
                     "key": i.toString(),
                 },
                 "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
-                "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
+                "description": "**Priority**  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME.PRIORITY_COUNT.HIGH+"  \nMEDIUM: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME.PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME.PRIORITY_COUNT.LOW,
                 "image": {
                     "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "accessibilityText":  body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME
@@ -408,9 +408,9 @@ app.post('/reg', function (req, res) {
                         },
                       ]
                     },
-                    "possibleIntents": {
+                    "systemIntent": {
                       "intent": "actions.intent.OPTION",
-                      "inputValueData": {
+                      "data": {
                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                         "carouselSelect": {
                           "items":category_issue,
