@@ -420,7 +420,7 @@ app.post('/reg', function (req, res) {
                               },
                               "description": "first description",
                               "image": {
-                                "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                                "url":"http://example.com/math_and_prime.jpg",
                                 "accessibilityText": "first alt"
                               },
                               "title": "first title"
@@ -431,7 +431,7 @@ app.post('/reg', function (req, res) {
                               },
                               "description": "second description",
                               "image": {
-                                "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                "url":"http://example.com/egypt",
                                 "accessibilityText": "second alt"
                               },
                               "title": "second title"
@@ -442,7 +442,7 @@ app.post('/reg', function (req, res) {
                               },
                               "description": "third description",
                               "image": {
-                                "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                "url": "http://example.com/recipe",
                                 "accessibilityText": "third alt"
                               },
                               "title": "second title"
