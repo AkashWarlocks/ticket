@@ -376,17 +376,16 @@ app.post('/reg', function (req, res) {
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({
-                "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
-                "openUrlAction": {
-                  "url": "https://google.com"
+                "optionInfo": {
+                    "key": i.toString(),
                 },
-                "description": "Description of item 1",
-                "footer": "Item 1 footer",
+                "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
+                "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
                 "image": {
-                  "url": "https://developers.google.com/actions/assistant.png",
-                  "accessibilityText": "Google Assistant Bubbles"
+                    "url": "http://example.com/math_and_prime.jpg",
+                    "accessibilityText": "Math & prime numbers"
                 }
-              });
+            },);
       
             }
 
@@ -401,59 +400,22 @@ app.post('/reg', function (req, res) {
               
                   "richResponse": {
                     "items":[
-                      {
-                        "simpleResponse": {
-                            "textToSpeech": "Okay you can have it",
-                            "displayText": "Categories"
-                        }
-                    },
-                    {
-                      "carouselBrowse": {
-                        "items":[
-                          {
-                            "title":"title 1",
-                            "openUrlAction": {
-                              "url": "https://google.com"
-                            },
-                            "description": "Description of item 1",
-                            "footer": "Item 1 footer",
-                            "image": {
-                              "url": "https://developers.google.com/actions/assistant.png",
-                              "accessibilityText": "Google Assistant Bubbles"
-                            }
-                          },
-                          {
-                            "title": "Title 2",
-                            "openUrlAction": {
-                              "url": "https://google.com"
-                            },
-                            "description": "Description of item 1",
-                            "footer": "Item 1 footer",
-                            "image": {
-                              "url": "https://developers.google.com/actions/assistant.png",
-                              "accessibilityText": "Google Assistant Bubbles"
-                            }
-                          },
-                          {
-                            "title": "Title 3",
-                            "openUrlAction": {
-                              "url": "https://google.com"
-                            },
-                            "description": "Description of item 1",
-                            "footer": "Item 1 footer",
-                            "image": {
-                              "url": "https://developers.google.com/actions/assistant.png",
-                              "accessibilityText": "Google Assistant Bubbles"
-                            }
+                        {
+                          "simpleResponse": {
+                              "textToSpeech": "Okay you can have it",
+                              "displayText": "Categories"
                           }
-
-                        ]
+                        },
+                      ]
+                    },
+                    "systemIntent": {
+                      "intent": "actions.intent.OPTION",
+                      "data": {
+                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                        "carouselSelect": {
+                          "items":category_issue,
+                        }
                       }
-                    }
-                    ]
-              
-                      
-                   
                     }
                     
                   }
