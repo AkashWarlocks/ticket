@@ -368,6 +368,7 @@ app.post('/reg', function (req, res) {
       })
     } else if(req.body.result.metadata.intentName === "Category_ticket") {
       var category_issue = [];
+      var data;
       request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
             if(err) {
               console.log('error: '+err)
@@ -388,8 +389,6 @@ app.post('/reg', function (req, res) {
             },);
       
             }
-
-            console.log("array: "+category_issue);
 
             res.json({
               "speech": "The selected ticket is raised by ",  
@@ -457,6 +456,8 @@ app.post('/reg', function (req, res) {
                 }
                 
             })
+            data = JSON.parse(JSON.stringify(body));
+            console.log("DATA: "+data)
            
           });
 
