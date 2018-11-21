@@ -377,14 +377,14 @@ app.post('/reg', function (req, res) {
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({
                 "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
+                "openUrlAction": {
+                  "url": "https://google.com"
+                },
                 "description": "Description of item 1",
                 "footer": "Item 1 footer",
                 "image": {
-                  "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
+                  "url": "https://developers.google.com/actions/assistant.png",
                   "accessibilityText": "Google Assistant Bubbles"
-                },
-                "openUrlAction": {
-                  "url": "https://github.com"
                 }
               });
       
@@ -400,44 +400,7 @@ app.post('/reg', function (req, res) {
                   "expectUserResponse": true,
               
                   "richResponse": {
-                    "items": [
-                      {
-                        "simpleResponse": {
-                          "textToSpeech": "Okay you can view the list of issues raised.  \nClick on any issue to see the details"
-                        }
-                      },
-                      {
-                        "carouselBrowse": {
-                          "items": [
-                            {
-                              "title": "Title of item 1",
-                              "openUrlAction": {
-                                "url": "https://google.com"
-                              },
-                              "description": "Description of item 1",
-                              "footer": "Item 1 footer",
-                              "image": {
-                                "url": "https://developers.google.com/actions/assistant.png",
-                                "accessibilityText": "Google Assistant Bubbles"
-                              }
-                            },
-                            {
-                              "title": "Title of item 2",
-                              "openUrlAction": {
-                                "url": "https://google.com"
-                              },
-                              "description": "Description of item 2",
-                              "footer": "Item 2 footer",
-                              "image": {
-                                "url": "https://developers.google.com/actions/assistant.png",
-                                "accessibilityText": "Google Assistant Bubbles"
-                              }
-                            }
-                          ]
-                        }
-                      
-                      },
-                    ]
+                    "items": category_issue
                     }
                     
                   }
