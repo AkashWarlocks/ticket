@@ -389,37 +389,41 @@ app.post('/reg', function (req, res) {
               });
       
             }
+
+            console.log("array: "+category_issue);
+
+            res.json({
+              "speech": "The selected ticket is raised by ",  
+              "displayText": "This card contains all the details of ticket you have selected",
+              "data": {
+                "google": {
+                  "expectUserResponse": true,
+              
+                  "richResponse": {
+                    "items": [
+                      {
+                        "simpleResponse": {
+                          "textToSpeech": "Okay you can view the list of issues raised.  \nClick on any issue to see the details"
+                        }
+                      },
+                      {
+                        "carouselBrowse": {
+                          "items": category_issue,
+                        }
+                      }
+                    ]
+                  },
+                 
+                }
+              
+              },
+                
+            })
            
           });
 
-          console.log("array: "+category_issue);
-      res.json({
-        "speech": "The selected ticket is raised by ",  
-        "displayText": "This card contains all the details of ticket you have selected",
-        "data": {
-          "google": {
-            "expectUserResponse": true,
         
-            "richResponse": {
-              "items": [
-                {
-                  "simpleResponse": {
-                    "textToSpeech": "Okay you can view the list of issues raised.  \nClick on any issue to see the details"
-                  }
-                },
-                {
-                  "carouselBrowse": {
-                    "items": category_issue,
-                  }
-                }
-              ]
-            },
-           
-          }
-        
-        },
-          
-      })
+     
     }
   } 
 )
