@@ -408,9 +408,9 @@ app.post('/reg', function (req, res) {
                         },
                       ]
                     },
-                    "systemIntent": {
+                    "possibleIntents": {
                       "intent": "actions.intent.OPTION",
-                      "data": {
+                      "inputValueData": {
                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                         "carouselSelect": {
                           "items":category_issue,
