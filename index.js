@@ -382,8 +382,8 @@ app.post('/reg', function (req, res) {
                 "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
                 "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
                 "image": {
-                    "url": "http://example.com/math_and_prime.jpg",
-                    "accessibilityText": "Math & prime numbers"
+                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                    "accessibilityText":  body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME
                 }
             },);
       
