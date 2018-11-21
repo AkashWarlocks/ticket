@@ -403,13 +403,51 @@ app.post('/reg', function (req, res) {
                     "items":[
                       {
                         "simpleResponse": {
-                            "textToSpeech": "Howdy! I can tell you fun facts about almost any number, like 42. What do you have in mind?",
-                            "displayText": "Howdy! I can tell you fun facts about almost any number. What do you have in mind?"
+                            "textToSpeech": "Okay you can have it",
+                            "displayText": "Categories"
                         }
                     },
                     {
                       "carouselBrowse": {
-                        "items":category_issue
+                        "items":[
+                          {
+                            "title":"title 1",
+                            "openUrlAction": {
+                              "url": "https://google.com"
+                            },
+                            "description": "Description of item 1",
+                            "footer": "Item 1 footer",
+                            "image": {
+                              "url": "https://developers.google.com/actions/assistant.png",
+                              "accessibilityText": "Google Assistant Bubbles"
+                            }
+                          },
+                          {
+                            "title": "Title 2",
+                            "openUrlAction": {
+                              "url": "https://google.com"
+                            },
+                            "description": "Description of item 1",
+                            "footer": "Item 1 footer",
+                            "image": {
+                              "url": "https://developers.google.com/actions/assistant.png",
+                              "accessibilityText": "Google Assistant Bubbles"
+                            }
+                          },
+                          {
+                            "title": "Title 3",
+                            "openUrlAction": {
+                              "url": "https://google.com"
+                            },
+                            "description": "Description of item 1",
+                            "footer": "Item 1 footer",
+                            "image": {
+                              "url": "https://developers.google.com/actions/assistant.png",
+                              "accessibilityText": "Google Assistant Bubbles"
+                            }
+                          }
+
+                        ]
                       }
                     }
                     ]
