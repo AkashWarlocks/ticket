@@ -457,7 +457,7 @@ app.post('/reg', function (req, res) {
                 
             })
             data = JSON.parse(JSON.stringify(body));
-            console.log("DATA: "+data)
+            console.log("DATA: "+data.SERVICE_TKTS_RES)
            
           });
 
