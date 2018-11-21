@@ -367,14 +367,14 @@ app.post('/reg', function (req, res) {
         },
       })
     } else if(req.body.result.metadata.intentName === "Category_ticket") {
-      var data; 
       var category_issue = [];
       request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
             if(err) {
               console.log('error: '+err)
             }
-            console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS))    
-            for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
+      console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS))    
+
+      for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({
                 "title": "Title of item 1",
                 "description": "Description of item 1",
@@ -392,7 +392,7 @@ app.post('/reg', function (req, res) {
            
           });
 
-     
+          console.log("array: "+category_issue);
       res.json({
         "speech": "The selected ticket is raised by ",  
         "displayText": "This card contains all the details of ticket you have selected",
