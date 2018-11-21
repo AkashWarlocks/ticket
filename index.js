@@ -376,7 +376,7 @@ app.post('/reg', function (req, res) {
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({
-                "title": "Title of item 1",
+                "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
                 "description": "Description of item 1",
                 "footer": "Item 1 footer",
                 "image": {
