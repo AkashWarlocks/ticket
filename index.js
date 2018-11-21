@@ -390,6 +390,7 @@ app.post('/reg', function (req, res) {
             }
 
           });
+          console.log("ASYNC ISSUES")
           res.json({
             "speech": "The selected ticket is raised by ",  
             "displayText": "This card contains all the details of ticket you have selected",
