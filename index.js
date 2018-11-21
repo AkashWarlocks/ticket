@@ -368,7 +368,6 @@ app.post('/reg', function (req, res) {
       })
     } else if(req.body.result.metadata.intentName === "Category_ticket") {
       var category_issue = [];
-      var data;
       request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
             if(err) {
               console.log('error: '+err)
@@ -390,31 +389,28 @@ app.post('/reg', function (req, res) {
       
             }
 
-            res.json({
-              "speech": "The selected ticket is raised by ",  
-              "displayText": "This card contains all the details of ticket you have selected",
-              "data": {
-                "google": {
-                  "expectUserResponse": true,
-                    "systemIntent": {
-                      "intent": "actions.intent.OPTION",
-                      "data": {
-                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                        "carouselSelect": {
-                          "items": category_issue
-                        }
+          });
+          res.json({
+            "speech": "The selected ticket is raised by ",  
+            "displayText": "This card contains all the details of ticket you have selected",
+            "data": {
+              "google": {
+                "expectUserResponse": true,
+                  "systemIntent": {
+                    "intent": "actions.intent.OPTION",
+                    "data": {
+                      "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                      "carouselSelect": {
+                        "items": category_issue
                       }
                     }
-                    
                   }
-                 
+                  
                 }
-                
-            })
-            data = body
-            console.log("DATA: "+data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS)
-
-          });
+               
+              }
+              
+          })
 
 
      
