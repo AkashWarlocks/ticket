@@ -366,7 +366,18 @@ app.post('/reg', function (req, res) {
         },
       })
 
-    }      
+    } else if(req.body.result.metadata.intentName === "Category_ticket") {
+            request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
+            if(err) {
+              console.log('error: '+err)
+            }
+            console.log((body.SERVICE_TKTS_RES))    
+      });
+      res.json({
+        "speech": "The selected ticket is raised by ",
+        "displayText": "This card contains all the details of ticket you have selected",  
+      })
+    }
   } 
 )
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
