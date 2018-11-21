@@ -396,57 +396,12 @@ app.post('/reg', function (req, res) {
               "data": {
                 "google": {
                   "expectUserResponse": true,
-              
-                  "richResponse": {
-                    "items":[
-                        {
-                          "simpleResponse": {
-                              "textToSpeech": "Okay you can have it",
-                              "displayText": "Categories"
-                          }
-                        },
-                      ]
-                    },
                     "systemIntent": {
                       "intent": "actions.intent.OPTION",
                       "data": {
                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                         "carouselSelect": {
-                          "items": [
-                            {
-                              "optionInfo": {
-                                "key": "first title"
-                              },
-                              "description": "first description",
-                              "image": {
-                                "url":"http://example.com/math_and_prime.jpg",
-                                "accessibilityText": "first alt"
-                              },
-                              "title": "first title"
-                            },
-                            {
-                              "optionInfo": {
-                                "key": "second"
-                              },
-                              "description": "second description",
-                              "image": {
-                                "url":"http://example.com/egypt",
-                                "accessibilityText": "second alt"
-                              },
-                              "title": "second title"
-                            },
-                            {
-                              "optionInfo": {
-                                "key": "third"
-                              },
-                              "description": "third description",
-                              "image": {
-                                "url": "http://example.com/recipe",
-                                "accessibilityText": "third alt"
-                              },
-                              "title": "third title"
-                            }
-                          ]
+                          "items": category_issue
                         }
                       }
                     }
@@ -457,7 +412,7 @@ app.post('/reg', function (req, res) {
                 
             })
             data = JSON.parse(JSON.stringify(body));
-            console.log("DATA: "+data.SERVICE_TKTS_RES)
+            console.log("DATA: "+data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS)
            
           });
 
