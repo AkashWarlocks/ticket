@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const request = require('request');
+const objectAssign = require('object-assign');
 
-var service = []     
+
+var service = [];
+var category_issue = [];
+var data;
 
 const app = express()
 
@@ -367,12 +371,13 @@ app.post('/reg', function (req, res) {
         },
       })
     } else if(req.body.result.metadata.intentName === "Category_ticket") {
-      var category_issue = [];
       request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
             if(err) {
               console.log('error: '+err)
             }
-      console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS))    
+      console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS));
+      data = JSON.parse(JSON.stringify(body));
+      console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS);    
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({                
@@ -395,10 +400,10 @@ app.post('/reg', function (req, res) {
              "messages":[
                {
                 
-                            "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
-                            "platform": "google",
-                            "textToSpeech": "The selected ticket is raised by",
-                            "type": "simple_response"
+                  "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
+                  "platform": "google",
+                  "textToSpeech": "For your information following are the high priority issues "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[0].PRIORITY_COUNT.HIGH+ " for internet" +body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].PRIORITY_COUNT.HIGH+" for account locked"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[2].PRIORITY_COUNT.HIGH+" for Admin access"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[3].PRIORITY_COUNT.HIGH+ " for hardware",
+                  "type": "simple_response"
                           
                },
               {
@@ -445,6 +450,7 @@ app.post('/reg', function (req, res) {
                 
             })
 
+
           });         
      /**
       * "messages": [
@@ -471,6 +477,37 @@ app.post('/reg', function (req, res) {
         res.json({
           "speech": "The selected ticket is raised by ",  
           "displayText": "Details of Selected category",
+          "data": {
+            "google": {
+              "expectUserResponse": true,
+              "richResponse": {
+                "items": [
+                  {
+                    "simpleResponse": {
+                      "textToSpeech": "So "+service[0].name+" this is the ticket raised by you",
+                    }
+                  },
+                  {
+                    "basicCard": {
+                        "title": "Service ticket ID " +service[0].id,
+                        "subtitle":"Name - " + service[0].name,
+                        "formattedText": "**Issue:** " +service[0].comment+"  \n**Priority:** "+service[0].priority,   
+                    }
+                },                 
+                ],
+                "suggestions": [
+                  {
+                    "title": "Create Ticket"
+                  },
+                  {
+                    "title": "View Tickets"
+                  }
+                ],
+              }
+            },
+          },
+
+
         })
     }
   } 
