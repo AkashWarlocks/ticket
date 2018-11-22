@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const request = require('request');
-const objAssign = requilre('object-assign');
+const objAssign = require('object-assign');
 
 var service = [];
 var category_issue = [];
