@@ -375,19 +375,16 @@ app.post('/reg', function (req, res) {
       console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS))    
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
-              category_issue.push({
-                "optionInfo": {
-                    "key": i.toString(),
-                },
-                "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
+              category_issue.push({                
                 "description": "Priority  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMEDIUM: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
                 "image": {
                     "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
                     "accessibilityText":  body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME
                 },
-                "openUrlAction": {
-                  "url": "https://www.google.com/"
-                }
+                "optionInfo": {
+                  "key": i.toString(),
+              },
+              "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
             }
             );
       
@@ -396,17 +393,18 @@ app.post('/reg', function (req, res) {
               "speech": "The selected ticket is raised by ",  
               "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
              "messages":[
-              {
-                "items":[
-                  {
-                    "carouselBrowse":{
-                      "items":category_issue
-                    }
-                  }
-                ],
-                "platform": "google",
-                "type": "carousel_card",
+               {
                 
+                            "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
+                            "platform": "google",
+                            "textToSpeech": "The selected ticket is raised by",
+                            "type": "simple_response"
+                          
+               },
+              {
+                "platform": "google",
+                "type": "carousel_card",
+                "items":category_issue
               },
             ]
               /*"data": {
