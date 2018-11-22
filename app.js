@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const request = require('request');
-
+const objAssign = requilre('object-assign');
 
 var service = [];
 var category_issue = [];
@@ -375,7 +375,8 @@ app.post('/service_ticket', function (req, res) {
               console.log('error: '+err)
             }
       console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS));
-     data = JSON.parse(JSON.stringify(body));
+      console.log("body type" +(typeof body));
+      data = Object.assign({},body)
       console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS);   
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
