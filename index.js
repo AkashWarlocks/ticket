@@ -405,14 +405,19 @@ app.post('/reg', function (req, res) {
               "data": {
                 "google": {
                   "expectUserResponse": true,
-                    "systemIntent": {
-                      "intent": "actions.intent.OPTION",
-                      "data": {
-                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                        "carouselSelect": {
-                          "items": category_issue
+                    "richResponse": {
+                      "items": [
+                        {
+                          "simpleResponse": {
+                            "textToSpeech": "this is a simple response"
+                          }
+                        },
+                        {
+                          "carouselBrowse": {
+                            "items":category_issue,
+                          }
                         }
-                      }
+                      ]
                     }
                     
                   }
