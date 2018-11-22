@@ -380,17 +380,28 @@ app.post('/reg', function (req, res) {
                     "key": i.toString(),
                 },
                 "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
-                "description": "**Priority**  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMEDIUM: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
+                "description": "Priority  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMEDIUM: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
                 "image": {
                     "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "accessibilityText":  body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME
+                },
+                "openUrlAction": {
+                  "url": "https://www.google.com/"
                 }
-            },);
+            }
+            );
       
             }
             res.json({
               "speech": "The selected ticket is raised by ",  
               "displayText": "This card contains all the details of ticket you have selected",
+             /*"messages":[
+                {
+                  "carouselBrowse": {
+                    "items":category_issue,
+                  }
+                }
+              ],*/
               "data": {
                 "google": {
                   "expectUserResponse": true,
@@ -415,7 +426,26 @@ app.post('/reg', function (req, res) {
          
 
 
-     
+     /**
+      * "messages": [
+        {
+          "displayText": data.textMsg,
+          "platform": "google",
+          "textToSpeech": data.speechMsg,
+          "type": "simple_response"
+        },
+        {
+          "items":Data.itemValues,
+          "platform": "google",
+          "type": "carousel_card"
+        },
+        {
+            "platform": "google",
+            "suggestions": data.sugChips ,
+            "type": "suggestion_chips"
+        }
+
+      */
     }
   } 
 )
