@@ -397,11 +397,10 @@ app.post('/reg', function (req, res) {
               "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
              "messages":[
               {
-                "displayText": "Text response",
+                "items":category_issue,
                 "platform": "google",
-                "textToSpeech": "Audio response",
-                "type": "simple_response",
-                "items":category_issue
+                "type": "carousel_card",
+                
               },
             ]
               /*"data": {
