@@ -403,10 +403,22 @@ app.post('/reg', function (req, res) {
                },
               {
                 "platform": "google",
-                "type": "list_card",
-                "title": "Categories of List",
-                "items":category_issue,
-                "intent": "actions.intent.OPTION"
+                "type": "custom_payload",
+                "payload":{
+                  "systemIntent":{
+                    "intent": "actions.intent.OPTION",
+                    "data":{
+                      "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                      "listSelect":{
+                        "title":"Categories of the issues",
+                        "items": category_issue
+                      }
+                    }
+                    
+
+
+                  }
+                }
               }
             ]
               /*"data": {
@@ -454,6 +466,12 @@ app.post('/reg', function (req, res) {
         }
 
       */
+    } else if(req.body.result.metadata.intentName === "Single_Category_Ticket") {
+
+        res.json({
+          "speech": "The selected ticket is raised by ",  
+          "displayText": "Details of Selected category",
+        })
     }
   } 
 )
