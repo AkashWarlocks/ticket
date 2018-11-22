@@ -397,7 +397,13 @@ app.post('/reg', function (req, res) {
               "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
              "messages":[
               {
-                "items":category_issue,
+                "items":[
+                  {
+                    "carouselBrowse":{
+                      "items":category_issue
+                    }
+                  }
+                ],
                 "platform": "google",
                 "type": "carousel_card",
                 
