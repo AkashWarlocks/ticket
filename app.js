@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const request = require('request');
-const objAssign = require('object-assign');
 
 var service = [];
 var category_issue = [];
@@ -376,7 +375,7 @@ app.post('/service_ticket', function (req, res) {
             }
       console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS));
       console.log("body type" +(typeof body));
-      data = Object.assign({},body)
+      Object.assign(data,body)
       console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].TICKET_NAME);   
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
@@ -425,7 +424,16 @@ app.post('/service_ticket', function (req, res) {
                 }
                 }
               }
-            ]
+            ],
+            "contextOut": [
+              {
+                  "name": "Category_ticket-followup",
+                  "lifespan": 2,
+                  "parameters": {
+                  "data": "{}"
+              }
+          }
+      ],
               /*"data": {
                 "google": {
                   "expectUserResponse": true,
@@ -473,8 +481,14 @@ app.post('/service_ticket', function (req, res) {
 
       */
     } else if(req.body.result.metadata.intentName === "Single_Category_ticket") {
-      console.log("category body "+ JSON.stringify (req.body.result));
-        res.json({
+      request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
+        if(err) {
+          console.log('error: '+err)
+        }
+        var num = req.body.result &&
+        req.body.result.parameters &&
+        req.body.result.parameters.id;
+                res.json({
           "speech": "The selected ticket is raised by ",  
           "displayText": "Details of Selected category",
           "data": {
@@ -484,14 +498,14 @@ app.post('/service_ticket', function (req, res) {
                 "items": [
                   {
                     "simpleResponse": {
-                      "textToSpeech": "So for this is the ticket raised by you",
+                      "textToSpeech": "So for "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[num].TICKET_NAME+" category there are "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[num].PRIORITY_COUNT.HIGH+" high priority issues",
                     }
                   },
                   {
                     "basicCard": {
-                        "title": "Service ticket ID " +service[0].id,
-                        "subtitle":"Name - " + service[0].name,
-                        "formattedText": "**Issue:** " +service[0].comment+"  \n**Priority:** "+service[0].priority,   
+                        "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[num].TICKET_NAME,
+                        
+                        "formattedText":  "**Priority**  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMedium: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
                     }
                 },                 
                 ],
@@ -509,6 +523,8 @@ app.post('/service_ticket', function (req, res) {
 
 
         })
+      })
+       
     }
   } 
 )
