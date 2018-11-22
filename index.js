@@ -394,14 +394,16 @@ app.post('/reg', function (req, res) {
             }
             res.json({
               "speech": "The selected ticket is raised by ",  
-              "displayText": "This card contains all the details of ticket you have selected",
+              "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
              "messages":[
-                {
-                  "carouselBrowse": {
-                    "items":category_issue,
-                  }
-                }
-              ],
+              {
+                "displayText": "Text response",
+                "platform": "google",
+                "textToSpeech": "Audio response",
+                "type": "simple_response",
+                "items":category_issue
+              },
+            ]
               /*"data": {
                 "google": {
                   "expectUserResponse": true,
