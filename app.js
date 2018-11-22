@@ -4,7 +4,6 @@ const request = require('request');
 
 var service = [];
 var category_issue = [];
-var data;
 
 const app = express()
 
@@ -375,8 +374,8 @@ app.post('/service_ticket', function (req, res) {
             }
       console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS));
       console.log("body type" +(typeof body));
-      Object.assign(data,body)
-      console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].TICKET_NAME);   
+     // Object.assign(data,body)
+      //console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].TICKET_NAME);   
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({                
