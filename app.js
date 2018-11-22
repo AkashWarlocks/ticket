@@ -375,8 +375,8 @@ app.post('/service_ticket', function (req, res) {
               console.log('error: '+err)
             }
       console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS));
-     /* data = JSON.parse(JSON.stringify(body));
-      console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS);    */
+     data = JSON.parse(JSON.stringify(body));
+      console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS);   
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({                
@@ -483,7 +483,7 @@ app.post('/service_ticket', function (req, res) {
                 "items": [
                   {
                     "simpleResponse": {
-                      "textToSpeech": "So "+service[0].name+" this is the ticket raised by you",
+                      "textToSpeech": "So for this is the ticket raised by you",
                     }
                   },
                   {
