@@ -504,7 +504,7 @@ app.post('/service_ticket', function (req, res) {
                     "basicCard": {
                         "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[num].TICKET_NAME,
                         
-                        "formattedText":  "**Priority**  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMedium: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
+                        "formattedText":  "**Priority**  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[num].PRIORITY_COUNT.HIGH+"  \nMedium: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[num].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[num].PRIORITY_COUNT.LOW,
                     }
                 },                 
                 ],
