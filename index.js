@@ -405,7 +405,9 @@ app.post('/reg', function (req, res) {
                 "platform": "google",
                 "type": "custom_payload",
                 "payload":{
-                  "systemIntent":{
+                  "google": {
+                    "expectUserResponse": true,
+                    "systemIntent":{
                     "intent": "actions.intent.OPTION",
                     "data":{
                       "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
@@ -414,10 +416,8 @@ app.post('/reg', function (req, res) {
                         "items": category_issue
                       }
                     }
-                    
-
-
                   }
+                }
                 }
               }
             ]
