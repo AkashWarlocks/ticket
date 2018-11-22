@@ -421,11 +421,7 @@ app.post('/reg', function (req, res) {
                 
             })
 
-          });
-          console.log("ASYNC ISSUES")
-         
-
-
+          });         
      /**
       * "messages": [
         {
