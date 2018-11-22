@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const request = require('request');
-const objectAssign = require('object-assign');
 
 
 var service = [];
@@ -21,7 +20,7 @@ app.use(
     bodyparser.json()
 );
 
-app.post('/reg', function (req, res) {
+app.post('/service_ticket', function (req, res) {
   
         
     if(req.body.result.metadata.intentName === "Service_Ticket")
@@ -222,16 +221,16 @@ app.post('/reg', function (req, res) {
                 var i;
                 for (i = 0; i<service.length; i++) {
                   if(service[i].issue === "internet") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/internet-min.png"
+                    var image = "https://windowsfish.com/wp-content/uploads/2018/07/wifi.png"
                     var accText = "Internet"
                   } else if (service[i].issue === "hardware") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/hardware-min.png"
+                    var image = "https://cdn4.iconfinder.com/data/icons/proglyphs-communication-and-devices/512/Laptop-512.png"
                     var accText = "Hardware"
                   } else if (service[i].issue === "account locked") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/acclocked-min.png"
+                    var image = "http://chittagongit.com//images/icon-locked/icon-locked-27.jpg"
                     var accText = "Accountlocked"
                   }else if (service[i].issue === "admin access") {
-                    var image = "https://raw.githubusercontent.com/AkashWarlockz/ticket/master/images/admin-min.png"
+                    var image = "https://cdn3.iconfinder.com/data/icons/user-group-black/100/user-access-512.png"
                     var accText = "Admin"
                   }
                     resp.push({
@@ -376,8 +375,8 @@ app.post('/reg', function (req, res) {
               console.log('error: '+err)
             }
       console.log((body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS));
-      data = JSON.parse(JSON.stringify(body));
-      console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS);    
+     /* data = JSON.parse(JSON.stringify(body));
+      console.log("So the data is" +data.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS);    */
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({                
