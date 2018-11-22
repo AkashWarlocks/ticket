@@ -466,8 +466,8 @@ app.post('/reg', function (req, res) {
         }
 
       */
-    } else if(req.body.result.metadata.intentName === "Single_Category_Ticket") {
-
+    } else if(req.body.result.metadata.intentName === "Single_Category_ticket") {
+      console.log("category body "+ JSON.stringify (req.body.result));
         res.json({
           "speech": "The selected ticket is raised by ",  
           "displayText": "Details of Selected category",
