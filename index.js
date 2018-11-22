@@ -382,7 +382,7 @@ app.post('/reg', function (req, res) {
                 "title": body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME,
                 "description": "Priority  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMEDIUM: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
                 "image": {
-                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                    "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
                     "accessibilityText":  body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME
                 },
                 "openUrlAction": {
@@ -395,14 +395,14 @@ app.post('/reg', function (req, res) {
             res.json({
               "speech": "The selected ticket is raised by ",  
               "displayText": "This card contains all the details of ticket you have selected",
-             /*"messages":[
+             "messages":[
                 {
                   "carouselBrowse": {
                     "items":category_issue,
                   }
                 }
-              ],*/
-              "data": {
+              ],
+              /*"data": {
                 "google": {
                   "expectUserResponse": true,
                     "richResponse": {
@@ -422,7 +422,7 @@ app.post('/reg', function (req, res) {
                     
                   }
                  
-                }
+              }*/
                 
             })
 
