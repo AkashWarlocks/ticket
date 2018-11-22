@@ -376,7 +376,7 @@ app.post('/reg', function (req, res) {
 
       for(var i = 0;i<body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS.length;i++) {
               category_issue.push({                
-                "description": "Priority  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMEDIUM: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
+                "description": "Priority  \nHigh: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.HIGH+"  \nMedium: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.MEDIUM+"  \nLow: "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].PRIORITY_COUNT.LOW,
                 "image": {
                     "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
                     "accessibilityText":  body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[i].TICKET_NAME
@@ -404,7 +404,9 @@ app.post('/reg', function (req, res) {
               {
                 "platform": "google",
                 "type": "list_card",
+                "title": "Categories of List",
                 "items":category_issue,
+                "intent": "actions.intent.OPTION"
               }
             ]
               /*"data": {
