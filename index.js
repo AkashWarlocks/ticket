@@ -404,7 +404,38 @@ app.post('/reg', function (req, res) {
               {
                 "platform": "google",
                 "type": "carousel_card",
-                "items":category_issue
+                "items":[
+                  {
+                    "description": "Option One Description",
+                    "image": {
+                      "url": "http://example.com/math_and_prime.jpg",
+                      "accessibilityText": "Image description for screen readers"
+                    },
+                    "optionInfo": {
+                      "key": "itemOne",
+                      "synonyms": [
+                        "thing one",
+                        "object one"
+                      ]
+                    },
+                    "title": "Option One Title"
+                  },
+                  {
+                    "description": "Option Two Description",
+                    "image": {
+                      "url": "http://example.com/math_and_prime.jpg",
+                      "accessibilityText": "Image description for screen readers"
+                    },
+                    "optionInfo": {
+                      "key": "itemTwo",
+                      "synonyms": [
+                        "thing two",
+                        "object two"
+                      ]
+                    },
+                    "title": "Option Two Title"
+                  }
+                ],
               },
             ]
               /*"data": {
