@@ -19,7 +19,8 @@ app.use(
 );
 
 app.post('/service_ticket', function (req, res) {
-  
+
+  console.log(req.body);
         
     if(req.body.result.metadata.intentName === "Service_Ticket")
     {
