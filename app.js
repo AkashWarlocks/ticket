@@ -18,7 +18,7 @@ app.use(
     bodyparser.json()
 );
 
-app.post('/service_ticket',{json:true}, function (req, res) {
+app.post('/service_ticket',{json:true},  (req, res)=> {
 
   console.log(JSON.stringify(req, undefined, 2));
         
