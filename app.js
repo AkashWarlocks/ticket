@@ -20,7 +20,7 @@ app.use(
 
 app.post('/service_ticket', function (req, res) {
 
-  console.log((req.body,null,2));
+  console.log((req, undefined, 2));
         
     if(req.body.result.metadata.intentName === "Service_Ticket")
     {
