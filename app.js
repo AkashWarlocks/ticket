@@ -21,7 +21,7 @@ app.use(
 );
 
 app.post('/service_ticket', function (req, res) {
-  console.log(JSON.stringify(req.body));
+  console.log("Resut.action is " +req.body.result.action);
         
     if(req.body.result.metadata.intentName === "Service_Ticket")
     {
@@ -410,7 +410,7 @@ app.post('/service_ticket', function (req, res) {
                 
                   "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
                   "platform": "google",
-                  "ssml": "<speak>For your information following are the high priority issues<break time=\"3\" /> "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[0].PRIORITY_COUNT.HIGH+ " for internet <break time=\"3\" />" +body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].PRIORITY_COUNT.HIGH+" for account locked <break time=\"3\" />"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[2].PRIORITY_COUNT.HIGH+" for Admin access <break time=\"3\" />"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[3].PRIORITY_COUNT.HIGH+ " for hardware</speak>",
+                  "ssml": "<speak>For your information following are the high priority issues<break time=\"2\" /> "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[0].PRIORITY_COUNT.HIGH+ " for internet <break time=\"2\" />" +body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].PRIORITY_COUNT.HIGH+" for account locked <break time=\"2\" />"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[2].PRIORITY_COUNT.HIGH+" for Admin access <break time=\"2\" />"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[3].PRIORITY_COUNT.HIGH+ " for hardware</speak>",
                   "type": "simple_response"
                           
                },
