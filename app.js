@@ -404,11 +404,13 @@ app.post('/service_ticket', function (req, res) {
               "speech": "The selected ticket is raised by ",  
               "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
              "messages":[
+               
+
                {
                 
                   "displayText": "Okay! So here are the issues listed by their categories along with the priorities",
                   "platform": "google",
-                  "textToSpeech": "For your information following are the high priority issues "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[0].PRIORITY_COUNT.HIGH+ " for internet" +body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].PRIORITY_COUNT.HIGH+" for account locked"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[2].PRIORITY_COUNT.HIGH+" for Admin access"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[3].PRIORITY_COUNT.HIGH+ " for hardware",
+                  "ssml": "<speak>For your information following are the high priority issues<break time=\"3\" /> "+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[0].PRIORITY_COUNT.HIGH+ " for internet <break time=\"3\" />" +body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[1].PRIORITY_COUNT.HIGH+" for account locked <break time=\"3\" />"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[2].PRIORITY_COUNT.HIGH+" for Admin access <break time=\"3\" />"+body.SERVICE_TKTS_RES.SERVICE_TKT_COUNTS[3].PRIORITY_COUNT.HIGH+ " for hardware</speak>",
                   "type": "simple_response"
                           
                },
@@ -508,6 +510,7 @@ app.post('/service_ticket', function (req, res) {
             "google": {
               "expectUserResponse": true,
               "richResponse": {
+               
                 "items": [
                   {
                     "simpleResponse": {
