@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const request = require('request');
+var config = require('./config');
+var bot_url = config.service_ticket_bot_url.categories_url;
 
 var service = [];
 var category_issue = [];
@@ -368,7 +370,13 @@ app.post('/service_ticket', function (req, res) {
         },
       })
     } else if(req.body.result.metadata.intentName === "Category_ticket") {
-      request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
+      var options = {
+        url:bot_url,
+        method:'GET',
+        json:true,
+
+      }
+      request(options,  (err, respi, body) => {
             if(err) {
               console.log('error: '+err)
             }
@@ -480,7 +488,13 @@ app.post('/service_ticket', function (req, res) {
 
       */
     } else if(req.body.result.metadata.intentName === "Single_Category_ticket") {
-      request.get('https://isg-poc.herokuapp.com/TICKETCOUNT', { json: true }, (err, respi, body) => {
+      var options = {
+        url:bot_url,
+        method:'GET',
+        json:true,
+
+      }
+      request(options, (err, respi, body) => {
         if(err) {
           console.log('error: '+err)
         }
